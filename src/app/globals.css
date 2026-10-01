@@ -1,0 +1,51 @@
+/* Design tokens. Every component reads these through var(--cg-*). */
+:root {
+  --cg-bone: #efede8; /* paper */
+  --cg-ink: #0d0d0f; /* text */
+  --cg-brass: #ff5a1f; /* accent orange */
+  --cg-pine: #1a1a1e; /* deep */
+  --cg-fog: #d9d6cf; /* line */
+  --cg-stone: #7a7874; /* muted */
+  --cg-cloud: #fff; /* white */
+  --cg-night: #0b0b0d; /* dark */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: inherit;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* the section styles were authored on top of these defaults */
+body,
+input,
+textarea,
+select,
+button {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+body {
+  background: var(--cg-bone);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}

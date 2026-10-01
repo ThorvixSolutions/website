@@ -1,0 +1,61 @@
+.cgps{position:relative;background:var(--cg-bone);color:var(--cg-ink);height:300vh;--t:0;--tilt:0deg;--prog:0}
+.cgps .cg-wrap{--pad:48px}
+.cgps-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vh,72px) 0}
+.cgps-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:clamp(28px,4.5vh,52px)}
+.cgps-intro{max-width:460px;margin:18px 0 0;font-size:16px;line-height:1.55;color:var(--cg-mut)}
+.cgps-week{flex:none;display:grid;grid-template-columns:auto auto auto;align-items:baseline;gap:4px 12px;justify-items:start}
+.cgps-week span{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cg-mut)}
+.cgps-week b{font-size:clamp(56px,5.6vw,92px);font-weight:800;font-stretch:125%;line-height:.85;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cgps-rail{grid-column:1/-1;display:flex;gap:4px;margin-top:10px}
+.cgps-rail i{width:22px;height:6px;background:color-mix(in srgb,var(--cg-ink) 12%,transparent);transition:background .3s}
+.cgps-rail i.is-on{background:var(--cg-brass)}
+.cgps-board{position:relative;display:grid;grid-template-columns:repeat(var(--n),1fr);gap:16px;--gap:16px}
+.cgps-col{position:relative;display:flex;flex-direction:column;gap:10px;padding:16px;background:color-mix(in srgb,var(--cg-cloud) 55%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cg-ink) 9%,transparent);transition:background .5s,box-shadow .5s,transform .6s cubic-bezier(.2,.8,.2,1);min-height:clamp(330px,44vh,440px)}
+.cgps-col.is-cur{background:var(--cg-cloud);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cg-ink) 14%,transparent),0 30px 60px -30px color-mix(in srgb,var(--cg-ink) 40%,transparent);transform:translateY(-10px)}
+.cgps-ch{display:flex;justify-content:space-between;align-items:center;gap:10px;height:30px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid color-mix(in srgb,var(--cg-ink) 10%,transparent)}
+.cgps-ch span{display:inline-flex;gap:10px;font-weight:600}
+.cgps-ch b{color:var(--cg-acc);font-weight:600}
+.cgps-ch em{font-style:normal;color:var(--cg-mut)}
+.cgps-desc{margin:0;font-size:14.5px;line-height:1.5;color:var(--cg-mut);max-height:0;opacity:0;overflow:hidden;transition:max-height .6s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.cgps-col.is-cur .cgps-desc{max-height:110px;opacity:1}
+.cgps-slot{height:104px;flex:none;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--cg-ink) 14%,transparent);background:repeating-linear-gradient(135deg,transparent 0 8px,color-mix(in srgb,var(--cg-ink) 4%,transparent) 8px 9px);transition:opacity .4s}
+.cgps-col.is-cur .cgps-slot{box-shadow:none;background:none}
+.cgps-card{position:relative;display:flex;flex-direction:column;gap:6px;padding:12px 14px;background:var(--cg-cloud);box-shadow:0 1px 0 color-mix(in srgb,var(--cg-ink) 10%,transparent),inset 0 0 0 1px color-mix(in srgb,var(--cg-ink) 8%,transparent);font-size:14px;transition:opacity .5s}
+.cgps-col.is-done .cgps-card{opacity:.55}
+.cgps-card span{font-size:10.5px;letter-spacing:.12em;color:var(--cg-mut)}
+.cgps-card b{font-weight:500}
+.cgps-dot{position:absolute;right:12px;top:12px;width:16px;height:16px;border-radius:50%;background:var(--cg-fog)}
+.cgps-dot.d1{background:color-mix(in srgb,var(--cg-ink) 70%,var(--cg-fog))}
+.cgps-dot.d2{background:color-mix(in srgb,var(--cg-brass) 45%,var(--cg-fog))}
+/* the travelling ticket: one column wide; slides by its own width + gap per column */
+.cgps-trav{position:absolute;left:0;top:0;width:calc((100% - var(--gap) * (var(--n) - 1)) / var(--n));padding:16px;pointer-events:none;translate:calc(var(--t) * (100% + var(--gap))) -10px;z-index:3}
+.cgps-tk{position:relative;height:104px;display:flex;flex-direction:column;justify-content:space-between;padding:12px 14px;background:var(--cg-brass);color:var(--cg-ink);box-shadow:0 20px 40px -18px color-mix(in srgb,var(--cg-brass) 80%,transparent);rotate:var(--tilt);transform-origin:50% 0}
+.cgps-trav .cgps-tk{margin-top:40px}
+.cgps-tk-top{display:flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.12em}
+.cgps-tk-top i{width:7px;height:7px;background:var(--cg-ink)}
+.cgps-tk-top em{margin-left:auto;font-style:normal;opacity:.75}
+.cgps-tk b{font-size:20px;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.cgps-tk-bot{display:flex;align-items:center;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.cgps-av{width:22px;height:22px;border-radius:50%;background:var(--cg-ink);box-shadow:inset 0 0 0 5px var(--cg-cloud)}
+/* stacked */
+.cgps.is-stack{height:auto}
+.cgps.is-stack .cgps-stage{position:relative;height:auto;padding:clamp(72px,10vw,120px) 0;overflow:visible}
+.cgps-steps{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column}
+.cgps-step{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:22px 0;border-top:1px solid color-mix(in srgb,var(--cg-ink) 12%,transparent)}
+.cgps-sico{position:relative;width:44px;height:30px;background:var(--cg-brass)}
+.cgps-sico i{position:absolute;left:7px;top:7px;width:6px;height:6px;background:var(--cg-ink)}
+.cgps-sh{margin:0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cg-mut)}
+.cgps-sh b{color:var(--cg-acc)}
+.cgps-step h3{margin:6px 0 8px;font-size:24px;font-weight:800;font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em}
+.cgps-sd{margin:0;font-size:15.5px;line-height:1.55;color:var(--cg-mut)}
+.cgps-sl{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0}
+.cgps-sl li{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;background:var(--cg-cloud);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--cg-ink) 10%,transparent)}
+.cgps.is-stack .cgps-head{margin-bottom:24px}
+.cgps.is-tab .cg-wrap{--pad:32px}
+.cgps.is-tab .cgps-board{gap:10px;--gap:10px}
+.cgps.is-tab .cgps-col{padding:12px}
+.cgps.is-tab .cgps-trav{padding:12px}
+.cgps.is-tab .cgps-tk b{font-size:16px}
+.cgps.is-tab .cgps-ch em{display:none}
+.cgps.is-tab .cgps-card{font-size:13px}
+@media (max-width:809px){.cgps .cg-wrap{--pad:20px}}

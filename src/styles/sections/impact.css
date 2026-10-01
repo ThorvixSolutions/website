@@ -1,0 +1,53 @@
+.cgim{position:relative;background:var(--cg-night);color:var(--cg-cloud);padding:clamp(88px,10vw,150px) 0}
+.cgim .cg-wrap{--pad:48px}
+.cgim-head{display:flex;justify-content:space-between;align-items:flex-end;gap:48px}
+.cgim-note{max-width:360px;margin:0;font-size:16px;line-height:1.55;color:var(--cg-mut)}
+.cgim-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:clamp(48px,6vw,84px) 0 0}
+.cgim-stat{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:14px;padding:22px 24px 0 18px;border-left:1px solid color-mix(in srgb,var(--cg-cloud) 16%,transparent)}
+.cgim-stat:first-child{padding-left:0;border-left:0}
+.cgim-l{margin:0;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cg-mut)}
+.cgim-v{margin:0;font-size:clamp(40px,4.2vw,68px);font-weight:800;font-stretch:125%;letter-spacing:-.03em;line-height:.9;white-space:nowrap}
+.cgim-stat:first-child .cgim-v{color:var(--cg-brass)}
+.cgim-roll{display:inline-flex}
+.cgim-dg{position:relative;display:inline-block;overflow:hidden;height:1em;line-height:1}
+.cgim-sz{visibility:hidden}
+.cgim-strip{position:absolute;left:0;top:0;display:flex;flex-direction:column;transition:translate 1.8s cubic-bezier(.2,.9,.15,1)}
+.cgim-strip span{height:1em;line-height:1}
+.cgim-ch{display:inline-block;line-height:1;white-space:pre}
+.cgim.is-full .cgim-strip{transition:none}
+.cg-sr{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important}
+.cgim-map{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;margin-top:clamp(56px,6vw,90px)}
+.cgim-days{display:grid;grid-template-rows:repeat(7,1fr);gap:4px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--cg-mut)}
+.cgim-days span{display:flex;align-items:center}
+.cgim-grid{position:relative;display:grid;grid-template-rows:repeat(7,auto);gap:4px;--f:0}
+.cgim-grid i{position:relative;display:block;aspect-ratio:1;border-radius:2px;background:color-mix(in srgb,var(--cg-cloud) 7%,transparent);transition:transform .2s}
+.cgim-grid i::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--cg-brass);opacity:0;opacity:calc(var(--a,0) * clamp(0, (var(--f) * 1.15 - var(--c)) * 9, 1))}
+.cgim-grid i.l1{--a:.22}
+.cgim-grid i.l2{--a:.5}
+.cgim-grid i.l3{--a:.76}
+.cgim-grid i.l4{--a:1}
+.cgim-grid i:hover{transform:scale(1.35);z-index:2;box-shadow:0 0 0 2px var(--cg-cloud)}
+.cgim-tip{position:absolute;z-index:5;translate:-50% calc(-100% - 10px);padding:6px 10px;background:var(--cg-cloud);color:var(--cg-ink);font-size:11px;letter-spacing:.06em;white-space:nowrap;pointer-events:none}
+.cgim-foot{grid-column:2;display:flex;justify-content:space-between;gap:20px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cg-mut)}
+.cgim-leg{display:inline-flex;align-items:center;gap:4px}
+.cgim-leg i{width:11px;height:11px;border-radius:2px;background:color-mix(in srgb,var(--cg-cloud) 7%,transparent)}
+.cgim-leg i:first-of-type{margin-left:6px}
+.cgim-leg i:last-of-type{margin-right:6px}
+.cgim-leg i.l1{background:color-mix(in srgb,var(--cg-brass) 28%,var(--cg-night))}
+.cgim-leg i.l2{background:color-mix(in srgb,var(--cg-brass) 50%,var(--cg-night))}
+.cgim-leg i.l3{background:color-mix(in srgb,var(--cg-brass) 76%,var(--cg-night))}
+.cgim-leg i.l4{background:var(--cg-brass)}
+.cgim.is-tab .cg-wrap{--pad:32px}
+.cgim.is-tab .cgim-stats{grid-template-columns:1fr 1fr;row-gap:36px}
+.cgim.is-tab .cgim-stat:nth-child(3){padding-left:0;border-left:0}
+.cgim.is-tab .cgim-head{flex-direction:column;align-items:flex-start;gap:20px}
+.cgim.is-ph .cg-wrap{--pad:20px}
+.cgim.is-ph .cgim-head{flex-direction:column;align-items:flex-start;gap:18px}
+.cgim.is-ph .cgim-stats{grid-template-columns:1fr 1fr;row-gap:30px}
+.cgim.is-ph .cgim-stat{padding:16px 10px 0 14px}
+.cgim.is-ph .cgim-stat:nth-child(3){padding-left:0;border-left:0}
+.cgim.is-ph .cgim-v{font-size:clamp(28px,8.4vw,40px)}
+.cgim.is-ph .cgim-grid{gap:3px}
+.cgim.is-ph .cgim-days{gap:3px}
+.cgim.is-ph .cgim-foot{flex-direction:column;gap:10px}
+@media (prefers-reduced-motion:reduce){.cgim-strip{transition:none}}

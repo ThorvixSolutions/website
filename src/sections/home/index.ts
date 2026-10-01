@@ -1,0 +1,14 @@
+export { Hero } from "./Hero";
+export { Clients } from "./Clients";
+export { Studio } from "./Studio";
+export { Services } from "./Services";
+export { Work } from "./Work";
+export { Process } from "./Process";
+export { Impact } from "./Impact";
+export { Stack } from "./Stack";
+export { Team } from "./Team";
+export { Reviews } from "./Reviews";
+export { Pricing } from "./Pricing";
+export { Faq } from "./Faq";
+export { Insights } from "./Insights";
+export { Cta } from "./Cta";
