@@ -162,7 +162,7 @@ export function Hero() {
       <div className="cgh-foot">
         <div className="cgh-copy" style={rise(entered, 520)}>
           <p className="cgh-sub">
-            Codeforge is a software development studio. We design, build and ship web apps, mobile apps and AI features for startups and growing
+            Forrentech is a software development studio. We design, build and ship web apps, mobile apps and AI features for startups and growing
             companies, one working release every two weeks.
           </p>
           <div className="cgh-btns">

@@ -1,0 +1,69 @@
+.cg-md{font-size:18px;line-height:1.7;color:color-mix(in srgb,var(--cg-ink) 86%,transparent)}
+.cg-md h2{margin:1.8em 0 .5em;font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.035em;line-height:1.15;color:var(--cg-ink)}
+.cg-md h2:first-child{margin-top:0}
+.cg-md p{margin:0 0 1em}
+.cg-md ul{list-style:none;margin:0 0 1.2em;padding:0;display:flex;flex-direction:column;gap:10px}
+.cg-md li{position:relative;padding-left:24px}
+.cg-md li::before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:2px;background:var(--cg-brass);box-shadow:0 0 6px color-mix(in srgb,var(--cg-brass) 60%,transparent)}
+.cg-md blockquote{margin:1.4em 0;padding:22px 26px;border-radius:16px;background:var(--cg-ink);color:var(--cg-cloud);font-size:clamp(20px,1.8vw,26px);line-height:1.35;letter-spacing:-.02em;font-weight:600;position:relative}
+.cg-md blockquote::before{content:"";position:absolute;left:26px;top:-6px;width:40px;height:12px;border-radius:3px;background:var(--cg-brass)}
+.cgpo{position:relative;background:var(--cg-bone);color:var(--cg-ink);padding:clamp(140px,16vh,180px) 0 clamp(90px,10vw,150px)}
+.cgpo-w{width:clamp(1280px, 92vw, 1520px);max-width:100%;margin:0 auto;padding:0 48px}
+.cgpo.is-tab .cgpo-w{padding:0 32px}
+.cgpo.is-ph .cgpo-w{padding:0 20px}
+.cgpo-prog{position:fixed;left:0;right:0;top:0;z-index:1200;height:6px;pointer-events:none;background:color-mix(in srgb,var(--cg-ink) 8%,transparent)}
+.cgpo-prog span{display:block;height:100%;background:repeating-linear-gradient(90deg,var(--cg-brass) 0 22px,transparent 22px 26px);clip-path:inset(0 100% 0 0)}
+.cgpo-cr ol{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cg-mut)}
+.cgpo-cr li+li::before{content:"/";margin-right:8px}
+.cgpo-cr a{color:inherit;text-decoration:none}
+.cgpo-cr a:hover{color:var(--cg-ink)}
+.cgpo-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:28px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--cg-mut)}
+.cgpo-meta em{font-style:normal;padding:5px 9px;background:var(--cg-brass);color:var(--cg-ink)}
+.cgpo-by{display:inline-flex;align-items:center;gap:10px;color:var(--cg-ink)}
+.cgpo-by img{width:30px;height:30px;object-fit:cover}
+.cgpo-sum{margin:24px 0 0;max-width:760px;font-size:clamp(18px,1.4vw,22px);line-height:1.5;color:var(--cg-mut)}
+.cgpo-cover{position:relative;aspect-ratio:21/9;margin:clamp(40px,5vw,70px) 0;overflow:hidden;background:var(--cg-fog)}
+.cgpo-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cgpo-px{position:absolute;inset:0;display:grid;pointer-events:none;animation:cgpo-fail 0s linear 3.5s forwards}
+.cgpo-px i{background:var(--cg-bone)}
+.cgpo-px i.is-hot{background:var(--cg-brass)}
+.cgpo-px.is-on{animation:none}
+.cgpo-px.is-on i{animation:cgpo-off .3s steps(1) both}
+@keyframes cgpo-off{0%{opacity:1;background:var(--cg-ink)}55%{opacity:1;background:var(--cg-brass)}100%{opacity:0}}
+@keyframes cgpo-fail{to{opacity:0}}
+.cgpo-grid{display:grid;grid-template-columns:minmax(0,680px) 300px;justify-content:space-between;gap:60px;align-items:start}
+.cgpo-side{position:sticky;top:110px}
+.cgpo-card{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--cg-cloud);box-shadow:inset 0 0 0 1px var(--cg-fog)}
+.cgpo-card>p{margin:6px 0 0;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cg-mut)}
+.cgpo-card>p.cgpo-bio{margin:0;font-size:14px;letter-spacing:0;text-transform:none;line-height:1.5}
+.cgpo-au{display:flex;align-items:center;gap:12px}
+.cgpo-au img{width:52px;height:52px;object-fit:cover}
+.cgpo-au span{display:flex;flex-direction:column;gap:3px}
+.cgpo-au b{font-size:17px;font-weight:600}
+.cgpo-au em{font-style:normal;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cg-acc)}
+.cgpo-share{display:flex;flex-wrap:wrap;gap:6px}
+.cgpo-share a,.cgpo-share button{padding:9px 12px;border:0;border-radius:2px;background:var(--cg-bone);color:var(--cg-ink);font:inherit;font-size:11px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:background .3s,color .3s}
+.cgpo-share a:hover,.cgpo-share button:hover{background:var(--cg-ink);color:var(--cg-cloud)}
+.cgpo-more{margin-top:clamp(80px,9vw,130px);padding-top:40px;border-top:1px solid var(--cg-fog)}
+.cgpo-mh{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.cgpo-mh h2{margin:0;font-size:clamp(28px,3vw,44px);font-weight:750;font-stretch:125%;text-transform:uppercase;letter-spacing:-.01em;line-height:1}
+.cgpo-mh a{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:inherit;text-decoration:none}
+.cgpo-mh a i{display:grid;place-items:center;width:34px;height:34px;background:var(--cg-ink);color:var(--cg-cloud)}
+.cgpo-mg{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);margin-top:36px}
+.cgpo-mc:focus-visible,.cgpo:focus-within .cgpo-mc{opacity:1!important;translate:0 0!important;transition:none!important}
+.cgpo-mc{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1fr);gap:24px;align-items:center;color:inherit;text-decoration:none}
+.cgpo-mi{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--cg-fog)}
+.cgpo-mi img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:scale 1s cubic-bezier(.2,.8,.2,1)}
+.cgpo-mc:hover .cgpo-mi img{scale:1.05}
+.cgpo-mt{display:flex;flex-direction:column;gap:10px}
+.cgpo-mt em{font-style:normal;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cg-acc)}
+.cgpo-mt b{font-size:clamp(19px,1.6vw,24px);font-weight:750;font-stretch:125%;text-transform:uppercase;line-height:1.08}
+.cgpo.is-tab .cgpo-grid,.cgpo.is-ph .cgpo-grid{grid-template-columns:1fr}
+.cgpo.is-tab .cgpo-side,.cgpo.is-ph .cgpo-side{position:relative;top:auto}
+.cgpo.is-ph{padding-top:120px}
+.cgpo.is-ph .cgpo-cover{aspect-ratio:4/3}
+.cgpo.is-ph .cgpo-mg{grid-template-columns:1fr}
+.cgpo.is-ph .cgpo-mc{grid-template-columns:1fr;gap:14px}
+.cgpo.is-ph .cgpo-mh{flex-direction:column;align-items:flex-start}
+.cgpo.is-ph .cg-md{font-size:17px}
+@media (prefers-reduced-motion:reduce){.cgpo-px{display:none}}

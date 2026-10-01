@@ -64,7 +64,7 @@ export function Studio() {
           </div>
           <div className="cgst-copy" style={rise(on, 360)}>
             <p>
-              Codeforge is a software development studio of senior engineers, product designers and AI specialists. We join early, own the hard
+              Forrentech is a software development studio of senior engineers, product designers and AI specialists. We join early, own the hard
               parts and ship working software every two weeks, so founders spend their time on customers, not on managing a build.
             </p>
             <Button href="/about" label="About the studio" kind="ghost" />

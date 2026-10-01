@@ -1,6 +1,6 @@
 # forrentech-portfolio
 
-Codeforge studio site, rebuilt from the Framer original (<https://enchanting-concept-819846.framer.app/>) in Next.js + React + GSAP + Lenis.
+Forrentech studio site, rebuilt from the Framer original (<https://enchanting-concept-819846.framer.app/>) in Next.js + React + GSAP + Lenis.
 
 ```bash
 npm install
@@ -12,11 +12,19 @@ npm run build
 
 ```text
 src/
-  ui/          primitives: Button, Eyebrow, Heading, Icons
+  ui/          primitives: Button, Eyebrow, Heading, Icons, Scramble, PixelImage
   components/  site chrome: Header, Footer, Loader, PageTransition, SmoothScroll
-  sections/    page sections, one folder per page (sections/home/Hero.tsx …)
-  app/         pages (routes) that compose sections
-  data/cms.ts  all content: site, services, work, team, reviews, plans, faq, posts
+  sections/    page sections, one folder per page
+    home/      Hero, Clients, Studio, Services, Work, Process, Impact, Stack, Team,
+               Reviews, Pricing, Faq, Insights, Cta (several are reused on inner pages)
+    shared/    PageHero, NotFound
+    services/  ServicesList, ServiceDetail
+    work/      WorkList, Case
+    blog/      BlogList, Post
+    about/ contact/ legal/
+  app/         pages (routes) that compose sections; /services, /work and /blog
+               detail pages are generated from the CMS data
+  data/        cms.ts (site, services, work, team, reviews, plans, faq, posts), legal.ts
   lib/         hooks, the gsap-driven frame ticker, the WebGL cube, text helpers
   styles/      base.css (shared) + sections/*.css (one per section)
 ```

@@ -19,6 +19,17 @@ import "@/styles/sections/cta.css";
 import "@/styles/sections/footer.css";
 import "@/styles/sections/loader.css";
 import "@/styles/sections/transition.css";
+import "@/styles/sections/page-hero.css";
+import "@/styles/sections/services-list.css";
+import "@/styles/sections/service-detail.css";
+import "@/styles/sections/work-list.css";
+import "@/styles/sections/case.css";
+import "@/styles/sections/about.css";
+import "@/styles/sections/blog-list.css";
+import "@/styles/sections/post.css";
+import "@/styles/sections/contact.css";
+import "@/styles/sections/legal.css";
+import "@/styles/sections/not-found.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Loader } from "@/components/Loader";
@@ -26,9 +37,9 @@ import { PageTransition } from "@/components/PageTransition";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { BOOT_SCRIPT } from "@/lib/boot";
 
-const TITLE = "Codeforge — Tech Developers for AI Startups, Software & Apps";
+const TITLE = "Forrentech — Tech Developers for AI Startups, Software & Apps";
 const DESCRIPTION =
-  "Codeforge is a software development studio for startups: tech developers who design, build and ship web apps, mobile apps, software and AI features in two-week sprints.";
+  "Forrentech is a software development studio for startups: tech developers who design, build and ship web apps, mobile apps, software and AI features in two-week sprints.";
 
 // absolute base for the OG / Twitter image URLs; Vercel provides the production domain
 const SITE_URL =

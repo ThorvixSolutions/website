@@ -1,0 +1,26 @@
+import type { Metadata } from "next";
+import { Cta, Faq, Pricing } from "@/sections/home";
+import { PageHero } from "@/sections/shared/PageHero";
+
+export const metadata: Metadata = {
+  title: "Pricing — MVP Sprints, Product Teams & Retainers | Forrentech",
+  description: "Fixed-price MVP sprints, monthly product teams and scale retainers. Transparent pricing from Forrentech, a software development studio.",
+};
+
+export default function PricingPage() {
+  return (
+    <>
+      <PageHero
+        index="04"
+        eyebrow="Pricing"
+        title="Clear prices,|no *surprises.*"
+        intro="A fixed quote for your first release, a monthly squad for your roadmap, or a retainer to keep a live product fast."
+        crumbs="Home:/, Pricing:/pricing"
+        facts="$18k|MVP from;30 days|notice, no lock-in;0|hidden fees"
+      />
+      <Pricing />
+      <Faq />
+      <Cta />
+    </>
+  );
+}

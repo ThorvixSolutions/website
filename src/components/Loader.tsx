@@ -6,7 +6,7 @@ import { useHtmlClass, useMounted } from "@/lib/hooks";
 import { easeInOutCubic } from "@/lib/scroll";
 import { FONT, WIDE, clamp01, splitList } from "@/lib/text";
 
-const NAME = site[0].f1 || "Codeforge";
+const NAME = site[0].f1 || "Forrentech";
 const LINES = splitList("Compiling modules;Running 318 tests;Deploying;Live").slice(0, 5);
 const DURATION = 2.5;
 const GLYPHS = "{}[]<>/=*#01";

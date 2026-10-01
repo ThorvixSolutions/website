@@ -12,7 +12,7 @@ const S = site[0];
 const COMPANY = parseLinks("Work:/work, Process:/process, Pricing:/pricing, About:/about, Blog:/blog, Contact:/contact");
 const LEGAL = parseLinks("Privacy:/privacy, Terms:/terms");
 const SOCIALS = parseLinks(S.f9);
-const WORDMARK = (S.f1 || "Codeforge").toUpperCase();
+const WORDMARK = (S.f1 || "Forrentech").toUpperCase();
 
 export function Footer() {
   const ref = useRef<HTMLElement>(null);
@@ -258,7 +258,7 @@ export function Footer() {
           <canvas ref={canvasRef} className="cgft-cv" />
         </div>
         <div className="cgft-legal" style={FONT.M}>
-          <span>{`© ${year} ${S.f1 || "Codeforge"}`}</span>
+          <span>{`© ${year} ${S.f1 || "Forrentech"}`}</span>
           {LEGAL.map((l) => (
             <a href={l.h} key={l.h}>
               {l.l}

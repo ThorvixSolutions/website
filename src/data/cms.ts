@@ -1,4 +1,4 @@
-// Content mirrored from the Codeforge Framer CMS. Field names (f1…f14) follow the CMS columns.
+// Content mirrored from the Forrentech Framer CMS. Field names (f1…f14) follow the CMS columns.
 
 export type SiteRow = { slug: string; f1: string; f2: string; f3: string; f4: string; f5: string; f6: string; f7: string; f8: string; f9: string; f10: string; f11: string; f12: string; f13: string; n1: string };
 export type WorkRow = { slug: string; f1: string; f2: string; f3: string; f4: string; f5: string; f6: string; f7: string; img: string; f8: string; f9: string; f10: string; f11: string; f12: string; f13: string; f14: string; n1: string };
@@ -12,10 +12,10 @@ export type ServiceRow = { slug: string; f1: string; f2: string; f3: string; f4:
 export const site: SiteRow[] = [
   {
     "slug": "site",
-    "f1": "Codeforge",
+    "f1": "Forrentech",
     "f2": "Software development studio",
     "f3": "A software development team for startups and growing companies: web apps, mobile apps and AI features, designed, built and shipped in two-week sprints.",
-    "f4": "hello@codeforge.dev",
+    "f4": "hello@Forrentech.dev",
     "f5": "+1 512 555 0142",
     "f6": "Austin",
     "f7": "America/Chicago",
@@ -225,7 +225,7 @@ export const plans: PlanRow[] = [
 export const reviews: ReviewRow[] = [
   {
     "slug": "r1",
-    "f1": "Codeforge felt like our own engineering team from week one. They shipped every two weeks and told us the truth about scope.",
+    "f1": "Forrentech felt like our own engineering team from week one. They shipped every two weeks and told us the truth about scope.",
     "f2": "Sofia Marchetti",
     "f3": "CEO",
     "f4": "Wayfare",
@@ -275,7 +275,7 @@ export const team: TeamRow[] = [
     "slug": "daniel-reyes",
     "f1": "Daniel Reyes",
     "f2": "Founder & CEO",
-    "f3": "Built two startups as CTO before starting Codeforge to build products the right way for others.",
+    "f3": "Built two startups as CTO before starting Forrentech to build products the right way for others.",
     "img": "/images/team/daniel-reyes.webp",
     "n1": "1"
   },
