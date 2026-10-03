@@ -7,14 +7,15 @@ content, then uncomment.
 ## Pages (routes return 404)
 
 Each file has a short stub at the top and the original page in a block comment below it.
-To restore: delete the stub, uncomment the block.
+To restore: delete the stub, uncomment the block. The three detail pages also need their folder renamed from `_[slug]` back to `[slug]`;
+the underscore hides them from the router, because the static export for GitHub Pages rejects dynamic routes it cannot pre-build.
 
 | Route | File | Needs |
 |---|---|---|
-| `/services/[slug]` | `src/app/services/[slug]/page.tsx` | Per service: long description, steps, deliverables, headline stat, stack, starting price (`services` rows `f3`, `f4`, `f6`–`f10` in `src/data/cms.ts`) |
-| `/work/[slug]` | `src/app/work/[slug]/page.tsx` | Per case: client name, challenge, solution, results, quote attribution, timeline, stack, images (`work` rows `f8`–`f14`) |
+| `/services/[slug]` | `src/app/services/_[slug]/page.tsx` | Per service: long description, steps, deliverables, headline stat, stack, starting price (`services` rows `f3`, `f4`, `f6`–`f10` in `src/data/cms.ts`) |
+| `/work/[slug]` | `src/app/work/_[slug]/page.tsx` | Per case: client name, challenge, solution, results, quote attribution, timeline, stack, images (`work` rows `f8`–`f14`) |
 | `/pricing` | `src/app/pricing/page.tsx` | Real plans and prices (`plans` rows are template placeholders) |
-| `/blog`, `/blog/[slug]` | `src/app/blog/page.tsx`, `src/app/blog/[slug]/page.tsx` | Real articles (`posts` rows are template placeholders) |
+| `/blog`, `/blog/[slug]` | `src/app/blog/page.tsx`, `src/app/blog/_[slug]/page.tsx` | Real articles (`posts` rows are template placeholders) |
 
 Links that pointed at these pages were repointed, with the old `href` left in a comment beside each:
 

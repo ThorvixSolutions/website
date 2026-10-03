@@ -1,5 +1,6 @@
-// PENDING (PENDING_FEATURES.md): this page is not on thorvix.com yet. The route returns 404 until
-// the original below is restored: delete this stub and uncomment the block.
+// PENDING (PENDING_FEATURES.md): this page is not on thorvix.com yet. The folder is named `_[slug]` so Next
+// ignores it (the static export rejects dynamic routes it cannot pre-build). To restore: rename the
+// folder back to `[slug]`, delete this stub and uncomment the block.
 import { notFound } from "next/navigation";
 
 export default function PendingPage() {
