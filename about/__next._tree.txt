@@ -1,0 +1,4 @@
+:HL["/_next/static/chunks/3tkuwa-0gf0zd.css","style"]
+:HL["/_next/static/chunks/0uvqrl5pvqzs6.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Instrument+Sans:wdth,wght@75..100,400..700&family=JetBrains+Mono:wght@400;500;600&display=swap","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"about","param":null,"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}},"staleTime":300,"buildId":"OA_jG_Gxz6Ap_YUBg-19U"}
