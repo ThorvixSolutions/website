@@ -6,7 +6,7 @@ import { useMagnetic, useMounted, useReducedMotion, useReveal, useWidth } from "
 import { FONT, cx, pad2, plain, rise } from "@/lib/text";
 import { Button, Eyebrow, Heading } from "@/ui";
 
-const HEADING = "The people who *ship* it";
+const HEADING = "Minds behind the *machines.*";
 const PEOPLE = team.slice(0, 8);
 // photos resolve through an 8×10 grid of squares that blink away
 const PX = 8 * 10;
@@ -49,7 +49,7 @@ export function Team() {
   };
 
   return (
-    <section ref={ref} className={cx("cg cgtm", on && "is-on", phone ? "is-ph" : tablet && "is-tab")} style={FONT.B} aria-label={plain(HEADING)}>
+    <section ref={ref} id="team" className={cx("cg cgtm", on && "is-on", phone ? "is-ph" : tablet && "is-tab")} style={FONT.B} aria-label={plain(HEADING)}>
       <div className="cg-wrap">
         <div className="cgtm-top">
           <div className="cgtm-hl">
@@ -58,8 +58,8 @@ export function Team() {
           </div>
           <div className="cgtm-side" style={rise(on, 300)}>
             <p>
-              Senior engineers and designers who have built products for startups and scale-ups. The people on your kickoff call are the people
-              writing your code.
+              A dedicated core of specialists building the future of enterprise intelligence. No layers, no account managers: you work directly
+              with the people who build.
             </p>
             <Button href="/about" label="Meet the whole team" kind="ghost" />
           </div>
@@ -77,7 +77,7 @@ export function Team() {
               style={rise(on, 150 + i * 110, 30)}
             >
               <div className="cgtm-ph">
-                <img src={p.img} alt={`${p.f1}, ${p.f2}`} loading="lazy" decoding="async" draggable={false} />
+                {p.img && <img src={p.img} alt={`${p.f1}, ${p.f2}`} loading="lazy" decoding="async" draggable={false} />}
                 {!reduced && (
                   <div className="cgtm-px" aria-hidden>
                     {Array.from({ length: PX }, (_, n) => {

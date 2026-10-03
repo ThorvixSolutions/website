@@ -6,38 +6,60 @@ import { easeInOutCubic } from "@/lib/scroll";
 import { FONT, clamp01, cx, pad2, plain, rise } from "@/lib/text";
 import { Eyebrow, Heading } from "@/ui";
 
-const HEADING = "From idea to launch in *8 weeks.*";
-const INTRO = "Every project runs on the same board you can see: one ticket for your product, moving a column every sprint.";
+const HEADING = "Bottleneck to *breakthrough.*";
+// PENDING (PENDING_FEATURES.md): the board intro and the 8-week timeline are not on thorvix.com
+// const INTRO = "Every project runs on the same board you can see: one ticket for your product, moving a column every sprint.";
 const WEEKS = 8;
-const TICKET = "Your product";
-const TICKET_META = "MVP · v1.0";
+const TICKET = "Your bottleneck";
+const TICKET_META = "Roadmap · v1.0";
 
 const COLUMNS = [
   {
-    name: "Discover",
-    when: "Week 1–2",
-    desc: "We meet your users, map the goals and cut the idea down to the one flow that proves it.",
-    tickets: ["Kickoff workshop", "User interviews", "Scope and fixed quote"],
+    name: "Discovery & Strategy",
+    when: "Step 1",
+    desc: "We map every bottleneck and architect a custom technical roadmap. We analyze your operations, identify automation opportunities, and scope exact resources needed.",
+    tickets: ["Bottleneck mapping", "Technical roadmap", "Resource scoping"],
   },
   {
-    name: "Design",
-    when: "Week 2–3",
-    desc: "Flows, wireframes and high-fidelity screens you click through on your own phone.",
-    tickets: ["User flows", "Clickable prototype", "Design system"],
+    name: "Deploy Team or Solution",
+    when: "Step 2",
+    desc: "Whether deploying a RAG-based AI agent or embedding a React/Node team into your Slack, we integrate into your existing systems with zero operational disruption.",
+    tickets: ["RAG-based AI agent", "Embedded React/Node team", "Zero-disruption integration"],
   },
   {
-    name: "Build",
-    when: "Week 3–7",
-    desc: "Two-week sprints with a demo of working software at the end of each one.",
-    tickets: ["Sprint 1 · core flow", "Sprint 2 · payments", "QA and code review"],
-  },
-  {
-    name: "Ship",
-    when: "Week 8",
-    desc: "Launch to the stores and the web, with monitoring on and our team on call.",
-    tickets: ["Store submission", "Launch checklist", "Monitoring and support"],
+    name: "Scale & Optimize",
+    when: "Step 3",
+    desc: "We don’t just hand over code. We monitor AI performance, maintain system health, and scale the solution continuously as your traffic and demands evolve.",
+    tickets: ["AI performance monitoring", "System health", "Continuous scaling"],
   },
 ];
+// PENDING (PENDING_FEATURES.md): the template's four week-based columns
+// const COLUMNS = [
+//   {
+//     name: "Discover",
+//     when: "Week 1–2",
+//     desc: "We meet your users, map the goals and cut the idea down to the one flow that proves it.",
+//     tickets: ["Kickoff workshop", "User interviews", "Scope and fixed quote"],
+//   },
+//   {
+//     name: "Design",
+//     when: "Week 2–3",
+//     desc: "Flows, wireframes and high-fidelity screens you click through on your own phone.",
+//     tickets: ["User flows", "Clickable prototype", "Design system"],
+//   },
+//   {
+//     name: "Build",
+//     when: "Week 3–7",
+//     desc: "Two-week sprints with a demo of working software at the end of each one.",
+//     tickets: ["Sprint 1 · core flow", "Sprint 2 · payments", "QA and code review"],
+//   },
+//   {
+//     name: "Ship",
+//     when: "Week 8",
+//     desc: "Launch to the stores and the web, with monitoring on and our team on call.",
+//     tickets: ["Store submission", "Launch checklist", "Monitoring and support"],
+//   },
+// ];
 const N = COLUMNS.length;
 
 export function Process() {
@@ -92,10 +114,13 @@ export function Process() {
             <div>
               <Eyebrow text="Process" on={on} />
               <Heading text={HEADING} on={on} delay={80} style={{ marginTop: 16 }} />
+              {/* PENDING (PENDING_FEATURES.md): board intro copy
               <p className="cgps-intro" style={rise(on, 260)}>
                 {INTRO}
               </p>
+              */}
             </div>
+            {/* PENDING (PENDING_FEATURES.md): week counter, thorvix.com gives no timeline
             {!stack && (
               <div className="cgps-week" style={rise(on, 360)} aria-live="polite">
                 <span style={FONT.M}>Week</span>
@@ -108,6 +133,7 @@ export function Process() {
                 </div>
               </div>
             )}
+            */}
           </div>
           {stack ? (
             <ol className="cgps-steps">

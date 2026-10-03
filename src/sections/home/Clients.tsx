@@ -6,11 +6,13 @@ import { useMounted, useReducedMotion, useReveal, useWidth } from "@/lib/hooks";
 import { FONT, cx, pad2, plain, rise, splitList } from "@/lib/text";
 import { Eyebrow, Heading } from "@/ui";
 
-const HEADING = "Trusted by *140+* product teams";
-const CLIENTS = splitList("Wayfare;Pulse;Ledgerly;Carehub;Stockroom;Northbeam;Halcyon;Kitestring;Oakline;Vantage;Brightpath;Monolith");
-const RESULTS =
-  "Northbeam|3x faster checkout;Halcyon|4.9★ app rating;Kitestring|99.99% uptime;Oakline|+22% repeat orders;Vantage|9 h saved a week;Brightpath|−40% support tickets;Monolith|2 wk to first release";
+const HEADING = "Trusted by *enterprise* leaders";
+const CLIENTS = splitList("Ren Solutions;GAJET;Ash Official;Redvyn");
+const RESULTS = "Ren Solutions|Distributor;GAJET|E-commerce;Ash Official|E-commerce";
 const INTERVAL = 2.4;
+// with fewer than 8 clients the 4×2 grid repeats them; the second row is shifted by two
+// so a client never sits under itself
+const START = Array.from({ length: 8 }, (_, i) => (CLIENTS.length < 8 && i >= 4 ? i + 2 : i) % CLIENTS.length);
 
 /** Each logo gets its own wordmark treatment so the grid reads like real brands. */
 const MARKS: CSSProperties[] = [
@@ -42,7 +44,7 @@ export function Clients() {
   const on = useReveal(ref, mounted, reduced, 0.15);
   const hovered = useRef(-1);
   const [grid, setGrid] = useState(() => ({
-    shown: Array.from({ length: 8 }, (_, i) => i),
+    shown: START,
     prev: Array(8).fill(-1) as number[],
     turns: Array(8).fill(0) as number[],
     next: 8,
@@ -84,9 +86,11 @@ export function Clients() {
             <Eyebrow text="Clients" on={on} />
             <Heading text={HEADING} on={on} delay={80} style={{ marginTop: 18 }} />
           </div>
+          {/* PENDING (PENDING_FEATURES.md): no intro copy on thorvix.com
           <p className="cgcl-body" style={rise(on, 300)}>
             Funded startups and growing companies in travel, health, fintech and retail ship their products with us.
           </p>
+          */}
         </div>
         <ul className="cgcl-grid" aria-label="Clients">
           {Array.from({ length: 8 }, (_, i) => {

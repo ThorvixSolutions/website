@@ -1,28 +1,24 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
-import { site } from "@/data/cms";
+import { services, site } from "@/data/cms";
 import { useClock, useMagnetic, useMounted, useReducedMotion, useReleased, useWidth } from "@/lib/hooks";
 import { FONT, cx, pad2, rise, splitList, splitPairs } from "@/lib/text";
 import { ArrowUpRight, Eyebrow, Heading } from "@/ui";
 
 const S = site[0];
-const EMAIL = S.f4 || "hello@Thorvix.dev";
-const BUILD = splitList("Web app;Mobile app;AI feature;Design;Team");
+const EMAIL = S.f4 || "hello@thorvix.com";
+// Web3Forms access keys are public by design: they only allow sending to the inbox they are tied to
+const WEB3FORMS_KEY = "52e36329-a0fc-4fcc-91ca-a9a5bc2bbbbd";
+const BUILD = services.map((s) => s.f1);
+// PENDING (PENDING_FEATURES.md): thorvix.com's booking form has no budget or timeline fields
 const BUDGET = splitList("<$25k;$25–60k;$60–120k;$120k+");
 const TIMELINE = splitList("As soon as possible;In the next month;In 1–3 months;Just exploring");
 const NEXT = splitPairs(
-  "We reply within one business day|A senior engineer reads your brief and asks the questions that matter.;A free 30-minute scoping call|We talk through the product, the risks and what to build first.;A fixed quote for the first release|Scope, timeline and price in writing, usually within three days.",
+  "One call|No commitment, 30 minutes, and we come prepared.;A custom roadmap|We map every bottleneck and scope the exact resources needed.;Results in weeks|From strategy session to production deployment in weeks, not quarters.",
 );
-// ?service= slugs → the "What are you building?" chip they preselect
-const SERVICE_CHIP: Record<string, string> = {
-  "web-apps": "Web app",
-  "mobile-apps": "Mobile app",
-  "ai-features": "AI feature",
-  "product-design": "Design",
-  "dedicated-teams": "Team",
-  "cloud-devops": "Team",
-};
+// ?service= slugs → the "Primary interest" chip they preselect
+const SERVICE_CHIP: Record<string, string> = Object.fromEntries(services.map((s) => [s.slug, s.f1]));
 
 type Form = { name: string; email: string; company: string; build: string[]; budget: string; timeline: string; msg: string };
 
@@ -34,9 +30,10 @@ export function Contact() {
   const { w } = useWidth(ref);
   const time = useClock(mounted, S.f7);
   const [entered, setEntered] = useState(false);
-  const [form, setForm] = useState<Form>({ name: "", email: "", company: "", build: [], budget: "", timeline: TIMELINE[0] || "", msg: "" });
+  const [form, setForm] = useState<Form>({ name: "", email: "", company: "", build: [], budget: "", timeline: "", msg: "" });
   const [error, setError] = useState("");
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   useMagnetic(ref, mounted);
 
   useEffect(() => {
@@ -73,30 +70,61 @@ export function Contact() {
 
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setForm((f) => ({ ...f, [k]: v }));
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (sending) return;
     if (!form.name.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim())) {
       setError("Name and a valid email are required.");
       return;
     }
     setError("");
-    const body = [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      form.company && `Company: ${form.company}`,
-      form.build.length && `Building: ${form.build.join(", ")}`,
-      form.budget && `Budget: ${form.budget}`,
-      form.timeline && `Timeline: ${form.timeline}`,
-      "",
-      form.msg,
-    ]
-      .filter((x) => typeof x === "string")
-      .join("\n");
-    const subject = `New project${form.company ? " — " + form.company : ""}`;
-    setSent(true);
+    // honeypot: real visitors never see or fill this field, so a value means a bot. Pretend it worked.
+    if (new FormData(e.currentTarget).get("botcheck")) {
+      setSent(true);
+      return;
+    }
+    const subject = `New booking request from ${form.name.trim()}${form.company ? " — " + form.company : ""}`;
+    setSending(true);
     try {
-      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    } catch {}
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject,
+          from_name: "Thorvix Website",
+          name: form.name.trim(),
+          email: form.email.trim(),
+          company: form.company.trim(),
+          interest: form.build.join(", "),
+          message: form.msg.trim(),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) throw new Error(data.message || `Web3Forms request failed (${res.status})`);
+      setSent(true);
+    } catch {
+      setError(`Could not send your request. Please email ${EMAIL} instead.`);
+    } finally {
+      setSending(false);
+    }
+    // The template's mailto: delivery, replaced by Web3Forms
+    // const body = [
+    //   `Name: ${form.name}`,
+    //   `Email: ${form.email}`,
+    //   form.company && `Company: ${form.company}`,
+    //   form.build.length && `Building: ${form.build.join(", ")}`,
+    //   form.budget && `Budget: ${form.budget}`,
+    //   form.timeline && `Timeline: ${form.timeline}`,
+    //   "",
+    //   form.msg,
+    // ]
+    //   .filter((x) => typeof x === "string")
+    //   .join("\n");
+    // setSent(true);
+    // try {
+    //   window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // } catch {}
   };
 
   const chips = (options: string[], key: "build" | "budget", multi: boolean, legend: string) => (
@@ -133,7 +161,7 @@ export function Contact() {
       <div className="cgct-w">
         <Eyebrow text="Contact" on={on} />
         <Heading
-          text="Start a *project*"
+          text="Book a strategy *call*"
           on={on}
           tag="h1"
           size={phone ? "clamp(40px,11.5vw,58px)" : "clamp(52px,6.6vw,112px)"}
@@ -142,7 +170,7 @@ export function Contact() {
           style={{ marginTop: 22 }}
         />
         <p className="cgct-intro" style={rise(on, 380)}>
-          Tell us what you are building. A senior engineer reads every message and replies within one business day.
+          Let&apos;s discuss how we can break your bottlenecks. No commitment, 30 minutes, fully prepared.
         </p>
         <div className="cgct-grid">
           <div className="cgct-formw" style={rise(on, 480, 30)}>
@@ -153,8 +181,8 @@ export function Contact() {
                     <i key={i} style={{ animationDelay: `${i * 60}ms` }} />
                   ))}
                 </span>
-                <b style={FONT.D}>Thanks — your email app is opening.</b>
-                <p>If nothing opened, write to us directly and paste your brief. We reply within one business day.</p>
+                <b style={FONT.D}>Thanks — your request is in.</b>
+                <p>We will be in touch to schedule your call. You can also write to us directly.</p>
                 <a href={`mailto:${EMAIL}`} style={FONT.M}>
                   {EMAIL}
                 </a>
@@ -164,6 +192,7 @@ export function Contact() {
               </div>
             ) : (
               <form className="cgct-form" onSubmit={submit} noValidate>
+                <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden style={{ display: "none" }} />
                 <div className="cgct-row">
                   <label className="cgct-f">
                     <span style={FONT.M}>Your name *</span>
@@ -178,7 +207,8 @@ export function Contact() {
                   <span style={FONT.M}>Company</span>
                   <input value={form.company} onChange={(e) => set("company", e.target.value)} autoComplete="organization" />
                 </label>
-                {chips(BUILD, "build", true, "What are you building?")}
+                {chips(BUILD, "build", true, "Primary interest")}
+                {/* PENDING (PENDING_FEATURES.md): budget and timeline fields
                 {chips(BUDGET, "budget", false, "Budget")}
                 <label className="cgct-f cgct-sel">
                   <span style={FONT.M}>Timeline</span>
@@ -191,17 +221,18 @@ export function Contact() {
                   </select>
                   <i aria-hidden />
                 </label>
+                */}
                 <label className="cgct-f">
-                  <span style={FONT.M}>Tell us about the project</span>
-                  <textarea rows={5} value={form.msg} placeholder="What it does, who it is for, and what already exists." onChange={(e) => set("msg", e.target.value)} />
+                  <span style={FONT.M}>Message (optional)</span>
+                  <textarea rows={5} value={form.msg} placeholder="Tell us about your challenge..." onChange={(e) => set("msg", e.target.value)} />
                 </label>
                 <div className="cgct-send">
-                  <button type="submit" className="cg-btn cg-solid" data-mag="true">
+                  <button type="submit" className="cg-btn cg-solid" data-mag="true" disabled={sending} aria-busy={sending}>
                     <span className="cg-cap">
                       <span className="cg-lbl">
-                        <span className="cg-l1">Send the brief</span>
+                        <span className="cg-l1">{sending ? "Sending…" : "Book call"}</span>
                         <span className="cg-l2" aria-hidden>
-                          Send the brief
+                          Book call
                         </span>
                       </span>
                       <span className="cg-arr" aria-hidden>
@@ -223,6 +254,14 @@ export function Contact() {
                 {EMAIL}
               </a>
             </div>
+            {/^https?:/.test(S.f8) && (
+              <div className="cgct-blk">
+                <span style={FONT.M}>Book directly</span>
+                <a href={S.f8} target="_blank" rel="noopener noreferrer">
+                  Pick a slot on our calendar ↗
+                </a>
+              </div>
+            )}
             <div className="cgct-two">
               {S.f5 && (
                 <div className="cgct-blk">

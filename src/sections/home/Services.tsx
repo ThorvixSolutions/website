@@ -6,16 +6,17 @@ import { useMagnetic, useMounted, useReducedMotion, useReveal, useScrollProgress
 import { FONT, cx, pad2, plain, rise } from "@/lib/text";
 import { Button, Eyebrow, Heading } from "@/ui";
 
-const HEADING = "Everything a product *needs.*";
-const BODY = "Six teams under one roof, so design, code, AI and cloud ship together.";
+const HEADING = "Capabilities engineered for *scale.*";
+const BODY = "Six high-impact verticals. One ruthlessly focused team. We don’t consult: we execute, embed, and deliver production-grade outcomes.";
 const LIST = services.slice(0, 6);
 const N = LIST.length;
 
-const tools = (s: (typeof LIST)[number]) =>
-  String(s.f6 || "")
-    .split(",")
-    .map((t) => t.trim())
-    .filter(Boolean);
+// PENDING (PENDING_FEATURES.md): per-service stat and stack are not on thorvix.com
+// const tools = (s: (typeof LIST)[number]) =>
+//   String(s.f6 || "")
+//     .split(",")
+//     .map((t) => t.trim())
+//     .filter(Boolean);
 
 export function Services() {
   const ref = useRef<HTMLElement>(null);
@@ -74,6 +75,7 @@ export function Services() {
                   {cur.f1}
                 </h3>
                 <p className="cgsv-short">{cur.f2}</p>
+                {/* PENDING (PENDING_FEATURES.md): per-service stat and stack
                 <div className="cgsv-out">
                   <b style={FONT.D}>{cur.f3}</b>
                   <span style={FONT.M}>{cur.f4}</span>
@@ -83,7 +85,9 @@ export function Services() {
                     <li key={t}>{t}</li>
                   ))}
                 </ul>
-                <Button href={`/services/${cur.slug}`} label="Explore the service" kind="solid" />
+                */}
+                {/* PENDING: detail pages are off, was href={`/services/${cur.slug}`} */}
+                <Button href={`/services#svc-${cur.slug}`} label="Explore the service" kind="solid" />
               </div>
               <ol className="cgsv-index" style={FONT.M} aria-label="Services">
                 {LIST.map((s, i) => (
@@ -156,6 +160,7 @@ export function Services() {
                   <div className="cgsv-body2" inert={!isOpen}>
                     <div>
                       <p className="cgsv-short">{s.f2}</p>
+                      {/* PENDING (PENDING_FEATURES.md): per-service stat and stack
                       <div className="cgsv-out">
                         <b style={FONT.D}>{s.f3}</b>
                         <span style={FONT.M}>{s.f4}</span>
@@ -165,7 +170,9 @@ export function Services() {
                           <li key={t}>{t}</li>
                         ))}
                       </ul>
-                      <Button href={`/services/${s.slug}`} label="Explore the service" kind="solid" />
+                      */}
+                      {/* PENDING: detail pages are off, was href={`/services/${s.slug}`} */}
+                      <Button href={`/services#svc-${s.slug}`} label="Explore the service" kind="solid" />
                     </div>
                   </div>
                 </li>

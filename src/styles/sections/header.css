@@ -104,3 +104,4 @@
 @media (max-width:1099px){.cghd .cghd-nav,.cghd .cghd-in>.cghd-cta,.cghd .cghd-drawer{display:none} .cghd .cghd-burger{display:inline-flex} .cghd-in{padding:0 32px;height:76px}}
 @media (max-width:809px){.cghd-in{padding:0 18px;height:68px} .cghd.is-solid .cghd-in{height:60px}}
 @media (prefers-reduced-motion:reduce){.cghd-wipe i,.cghd-sin,.cghd-tiles li{animation:none!important}}
+.cghd-mk{width:28px;height:28px;object-fit:contain;flex:none}

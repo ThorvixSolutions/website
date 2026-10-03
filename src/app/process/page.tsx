@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Cta, Faq, Impact, Process } from "@/sections/home";
+import { Cta, Process } from "@/sections/home";
+// PENDING (PENDING_FEATURES.md): the commit heatmap and FAQ are not on thorvix.com yet
+// import { Faq, Impact } from "@/sections/home";
 import { PageHero } from "@/sections/shared/PageHero";
 
 export const metadata: Metadata = {
-  title: "Our Process — Two-Week Sprints from Idea to Launch | Thorvix",
-  description: "How Thorvix builds software: discovery, design, build and ship in two-week sprints, with working software demoed every sprint.",
+  title: "Our Process — Bottleneck to Breakthrough | Thorvix",
+  description: "How Thorvix works: discovery and strategy, deploying a team or solution, then scaling and optimizing.",
 };
 
 export default function ProcessPage() {
@@ -13,14 +15,14 @@ export default function ProcessPage() {
       <PageHero
         index="03"
         eyebrow="Process"
-        title="From idea|to *launch.*"
-        intro="One board you can see, a demo every two weeks and a fixed quote for the first release. No black box."
+        title="Bottleneck to|*breakthrough.*"
+        intro="We map every bottleneck, deploy the team or solution, then scale and optimize as your demands evolve."
         crumbs="Home:/, Process:/process"
-        facts="8 wk|to an MVP;2 wk|sprints;1 day|reply time"
+        facts="3|steps;48h|team deploy;60%|cost reduction"
       />
       <Process />
-      <Impact />
-      <Faq />
+      {/* <Impact /> */}
+      {/* <Faq /> */}
       <Cta />
     </>
   );

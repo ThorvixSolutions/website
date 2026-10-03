@@ -6,9 +6,9 @@ import { useMounted, useReducedMotion, useReveal, useWidth } from "@/lib/hooks";
 import { FONT, cx, pad2, plain, rise, splitList } from "@/lib/text";
 import { Eyebrow, Heading } from "@/ui";
 
-const HEADING = "Approved by the teams we *build* for";
-const PR_TITLE = "Ship the new {company} platform";
-const DIFF = splitList("client: {company};scope: design, build, launch;status: live in production");
+const HEADING = "What our clients *say.*";
+const PR_TITLE = "Client review · {company}";
+const DIFF = splitList("client: {company};reviewer: {name};status: approved");
 const INTERVAL = 8;
 const LIST = reviews.slice(0, 6);
 const N = LIST.length;
@@ -19,6 +19,17 @@ const slug = (s: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+// thorvix.com has no reviewer photos: fall back to a tile with the company's initials
+const avatar = (r: ReviewRow) =>
+  r.img ||
+  `data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="#1c1c1c"/><text x="20" y="25" font-family="monospace" font-size="14" fill="#fff" text-anchor="middle">${(r.f4 || "")
+      .split(/\s+/)
+      .map((p) => p[0] || "")
+      .join("")
+      .slice(0, 2)
+      .toUpperCase()}</text></svg>`,
+  )}`;
 
 export function Reviews() {
   const ref = useRef<HTMLElement>(null);
@@ -82,7 +93,7 @@ export function Reviews() {
     return (
       <>
         <div className="cgrv-who">
-          <img src={r.img} alt="" loading="lazy" decoding="async" />
+          <img src={avatar(r)} alt="" loading="lazy" decoding="async" />
           <span>
             <b>{r.f2}</b>
             <em style={FONT.M}>
@@ -140,15 +151,17 @@ export function Reviews() {
     >
       <div className="cg-wrap cgrv-grid">
         <div className="cgrv-l">
-          <Eyebrow text="Client reviews" on={on} />
+          <Eyebrow text="Client voices" on={on} />
           <Heading text={HEADING} on={on} delay={120} />
+          {/* PENDING (PENDING_FEATURES.md): no intro copy on thorvix.com
           <p className="cgrv-copy" style={rise(on, 300)}>
             Every project ends with a review. These are the ones our clients left.
           </p>
+          */}
           <div className="cgrv-tabs" role="tablist" aria-label="Clients" style={rise(on, 420)}>
             {LIST.map((r, i) => (
               <button type="button" role="tab" aria-selected={i === cur} className={cx("cgrv-tab", i === cur && "is-on")} onClick={() => go(i)} key={r.slug}>
-                <img src={r.img} alt="" loading="lazy" decoding="async" />
+                <img src={avatar(r)} alt="" loading="lazy" decoding="async" />
                 <span>
                   <b>{r.f4}</b>
                   <em style={FONT.M}>{r.f2}</em>

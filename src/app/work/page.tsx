@@ -4,9 +4,9 @@ import { PageHero } from "@/sections/shared/PageHero";
 import { WorkList } from "@/sections/work/WorkList";
 
 export const metadata: Metadata = {
-  title: "Our Work — Case Studies from Startups & Growing Companies | Thorvix",
+  title: "Case Studies — Proven Impact | Thorvix",
   description:
-    "Case studies of web apps, mobile apps and AI products Thorvix designed, built and shipped: travel, fintech, health, retail and more.",
+    "Results from Thorvix AI agents, automation and dedicated engineering teams in real estate, e-commerce and SaaS.",
 };
 
 export default function WorkPage() {
@@ -14,11 +14,11 @@ export default function WorkPage() {
     <>
       <PageHero
         index="02"
-        eyebrow="Work"
-        title="Products we|*shipped.*"
-        intro="Real launches with real numbers. Every case below was designed, built and shipped by the same team you would work with."
-        crumbs="Home:/, Work:/work"
-        facts="140+|products shipped;4.9/5|client rating;12|industries"
+        eyebrow="Case studies"
+        title="Numbers|don't *lie.*"
+        intro="Proven impact in real estate, e-commerce and SaaS, in our clients' own words."
+        crumbs="Home:/, Case Studies:/work"
+        facts="+40%|lead conversion;−60%|ticket resolution time;3×|faster feature shipping"
       />
       <WorkList />
       <Clients />

@@ -14,7 +14,8 @@ function Card({ c, big, i, on }: { c: WorkRow; big: boolean; i: number; on: bool
   const replay = () => setPlay((n) => n + 1);
   return (
     <li className={cx("cgwl-card", big && "is-big")} style={rise(on, 120 + i * 90, 36)}>
-      <a href={`/work/${c.slug}`} onMouseEnter={replay} onFocus={replay} aria-label={`${c.f1}: ${c.f3}`}>
+      {/* PENDING (PENDING_FEATURES.md): case detail pages are off, was href={`/work/${c.slug}`} */}
+      <a onMouseEnter={replay} aria-label={`${c.f2} · ${c.f7}: ${c.f3}`}>
         <span className="cgwl-ph">
           <PixelImage src={c.img} play={play} base="cgwl-pix" eager={i < 2} />
           <span className="cgwl-res" aria-hidden>
@@ -23,19 +24,19 @@ function Card({ c, big, i, on }: { c: WorkRow; big: boolean; i: number; on: bool
           </span>
         </span>
         <span className="cgwl-meta" style={FONT.M}>
-          <span>{c.f1}</span>
-          <span>
-            {c.f2} · {c.f7}
-          </span>
+          <span>{c.f2}</span>
+          <span>{c.f7}</span>
         </span>
         <span className="cgwl-t">
           <b style={FONT.D}>{c.f3}</b>
+          {/* PENDING: the arrow and "Read the case" return with the detail pages
           <i aria-hidden>
             <ArrowRight size={15} />
           </i>
+          */}
         </span>
         <span className="cgwl-sum">{c.f6}</span>
-        <span className="cg-sr">Read the case</span>
+        {/* <span className="cg-sr">Read the case</span> */}
       </a>
     </li>
   );

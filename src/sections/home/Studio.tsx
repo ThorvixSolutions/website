@@ -1,14 +1,19 @@
 "use client";
 
 import { CSSProperties, useRef } from "react";
+import { team } from "@/data/cms";
 import { useMagnetic, useMounted, useReducedMotion, useReveal, useScrollProgress, useWidth } from "@/lib/hooks";
 import { FONT, cx, pad2, plain, rise, splitList } from "@/lib/text";
 import { Button, Eyebrow } from "@/ui";
 
 /** `|` breaks a line; [n] drops photo n inline between the words. */
-const TEXT = "Engineers [1] and designers | who build software [2] | startups [3] can bet on.";
-const PHOTOS = ["/images/studio/1.webp", "/images/studio/2.webp", "/images/studio/3.webp"];
-const FACTS = splitList("Founded 2016;Austin, Texas;38 engineers and designers");
+// PENDING (PENDING_FEATURES.md): the template's studio photos are not on thorvix.com; the tiles use team photos until real ones exist
+// const TEXT = "Engineers [1] and designers | who build software [2] | startups [3] can bet on.";
+// const PHOTOS = ["/images/studio/1.webp", "/images/studio/2.webp", "/images/studio/3.webp"];
+// no [n] markers: the headline runs without photo tiles for now
+const TEXT = "Forged for the future. | Expertise, infra | and execution on day one.";
+const PHOTOS = team.map((p) => p.img).filter(Boolean);
+const FACTS = splitList("Lahore, PK;Global remote;Mid-to-senior talent only");
 
 export function Studio() {
   const ref = useRef<HTMLElement>(null);
@@ -40,7 +45,8 @@ export function Studio() {
                   if (m) {
                     return (
                       <span className="cgst-tile" key={k}>
-                        <img src={PHOTOS[(+m[1] - 1) % PHOTOS.length]} alt="" loading="lazy" decoding="async" />
+                        {/* portraits in a wide tile: anchor near the top so faces stay in frame */}
+                        <img src={PHOTOS[(+m[1] - 1) % PHOTOS.length]} alt="" loading="lazy" decoding="async" style={{ objectPosition: "50% 22%" }} />
                       </span>
                     );
                   }
@@ -52,7 +58,7 @@ export function Studio() {
         </h2>
         <div className="cgst-row">
           <div className="cgst-meta" style={rise(on, 200)}>
-            <Eyebrow text="The studio" on={on} />
+            <Eyebrow text="The Thorvix edge" on={on} />
             <ul className="cgst-facts" style={FONT.M}>
               {FACTS.map((f, i) => (
                 <li key={i}>
@@ -64,10 +70,9 @@ export function Studio() {
           </div>
           <div className="cgst-copy" style={rise(on, 360)}>
             <p>
-              Thorvix is a software development studio of senior engineers, product designers and AI specialists. We join early, own the hard
-              parts and ship working software every two weeks, so founders spend their time on customers, not on managing a build.
+              Stop wasting months on recruitment and onboarding. We bring the expertise, the infra, and the execution.
             </p>
-            <Button href="/about" label="About the studio" kind="ghost" />
+            <Button href="/about" label="Why Thorvix" kind="ghost" />
           </div>
         </div>
       </div>

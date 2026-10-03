@@ -37,9 +37,9 @@ import { PageTransition } from "@/components/PageTransition";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { BOOT_SCRIPT } from "@/lib/boot";
 
-const TITLE = "Thorvix — Tech Developers for AI Startups, Software & Apps";
+const TITLE = "Thorvix — AI Agents, Automation & Dedicated Engineering Teams";
 const DESCRIPTION =
-  "Thorvix is a software development studio for startups: tech developers who design, build and ship web apps, mobile apps, software and AI features in two-week sprints.";
+  "Thorvix deploys custom AI agents, dedicated engineering teams and intelligent automation so you scale without the hiring overhead. AI-powered engineering, deployed fast.";
 
 // absolute base for the OG / Twitter image URLs; Vercel provides the production domain
 const SITE_URL =
@@ -52,6 +52,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
       { url: "/icon-light.png", media: "(prefers-color-scheme: light)" },
       { url: "/icon-dark.png", media: "(prefers-color-scheme: dark)" },
     ],

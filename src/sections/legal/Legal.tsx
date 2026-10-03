@@ -7,7 +7,7 @@ import { useMounted, useReducedMotion, useReleased, useWidth } from "@/lib/hooks
 import { FONT, cx, pad2, rise } from "@/lib/text";
 import { Eyebrow, Heading } from "@/ui";
 
-const EMAIL = site[0].f4 || "hello@Thorvix.dev";
+const EMAIL = site[0].f4 || "hello@thorvix.com";
 const TITLES = { privacy: "Privacy policy", terms: "Terms of use" };
 
 type Section = { h: string; id: string; lines: string[] };

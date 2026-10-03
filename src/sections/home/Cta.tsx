@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { site } from "@/data/cms";
 import { resolveRgb, startCube } from "@/lib/cube";
 import { useMagnetic, useMounted, useReducedMotion, useReveal, useWidth } from "@/lib/hooks";
 import { FONT, cx, rise, splitList } from "@/lib/text";
 import { Button, Eyebrow, Heading } from "@/ui";
 
-const FACTS = splitList("Reply within 1 business day;Free 30-minute scoping call;Fixed quote for the first release");
+const FACTS = splitList("No commitment;30 minutes;We come prepared");
 
 export function Cta() {
   const ref = useRef<HTMLElement>(null);
@@ -49,10 +50,10 @@ export function Cta() {
       <div className="cgc-glow" aria-hidden />
       <div className="cgc-in">
         <div className="cgc-copy">
-          <Eyebrow text="Start a project" on={on} />
-          <Heading text="Let's build|your *product.*" on={on} size="clamp(38px,4.9vw,76px)" lh={0.94} delay={120} style={{ marginTop: 22 }} />
+          <Eyebrow text="Free strategy call" on={on} />
+          <Heading text="Ready to|break *through?*" on={on} size="clamp(38px,4.9vw,76px)" lh={0.94} delay={120} style={{ marginTop: 22 }} />
           <p className="cgc-sub" style={rise(on, 380)}>
-            Tell us what you are building. You get a reply within one business day, a free scoping call and a fixed quote for the first release.
+            Stop letting technical debt and hiring delays stall your growth. One call. A custom roadmap. Results in weeks.
           </p>
           <form
             className="cgc-form"
@@ -66,6 +67,8 @@ export function Cta() {
             onFocus={() => (focusRef.current = 1)}
             onBlur={() => (focusRef.current = 0)}
           >
+            {/* PENDING (PENDING_FEATURES.md): the email field that prefilled /contact. The button now opens
+                the booking calendar directly.
             <label className="cg-sr" htmlFor="cgc-email">
               Work email
             </label>
@@ -79,7 +82,10 @@ export function Cta() {
               onChange={(e) => setEmail(e.target.value)}
               style={FONT.M}
             />
-            <Button href={href} label="Get a quote" kind="solid" />
+            <Button href={href} label="Book a call" kind="solid" />
+            */}
+            <Button href={site[0].f8 || href} label="Book a call" kind="solid" />
+            <Button href="/contact" label="Send a message" kind="ghost" />
           </form>
           <ul className="cgc-facts" style={{ ...FONT.M, ...rise(on, 580) }}>
             {FACTS.map((f) => (

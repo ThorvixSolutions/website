@@ -7,8 +7,9 @@ import { easeInOutCubic, scrollToProgress } from "@/lib/scroll";
 import { FONT, clamp01, cx, pad2, plain, rise } from "@/lib/text";
 import { Button, Eyebrow, Heading } from "@/ui";
 
-const HEADING = "Products we *shipped.*";
-const INTRO = "Web apps, mobile apps and AI features for startups and growing companies. Every one live, every one measured.";
+const HEADING = "Numbers don't *lie.*";
+// PENDING (PENDING_FEATURES.md): no intro copy on thorvix.com
+// const INTRO = "Web apps, mobile apps and AI features for startups and growing companies. Every one live, every one measured.";
 const CASES = work.slice(0, 8);
 const N = Math.max(1, CASES.length);
 // 3×3 camera grid: the first case sits in the centre tile, the rest wrap around it
@@ -108,20 +109,23 @@ export function Work() {
     <div ref={ref} className={cx("cg cgwk", stack && "is-stack", on && "is-on", full && "is-full", w < 810 && "is-ph")} style={{ ...FONT.B, ["--n" as string]: N }}>
       {stack ? (
         <section className="cg-wrap cgwk-list" aria-label={plain(HEADING)}>
-          <Eyebrow text="Selected work" on={on} />
+          <Eyebrow text="Proven impact" on={on} />
           <Heading text={HEADING} on={on} delay={80} style={{ marginTop: 16 }} />
+          {/* PENDING (PENDING_FEATURES.md): intro copy
           <p className="cgwk-intro" style={rise(on, 200)}>
             {INTRO}
           </p>
+          */}
           <div className="cgwk-cards">
             {CASES.map((c, i) => (
-              <a className="cgwk-card" href={`/work/${c.slug}`} style={rise(on, 200 + i * 80)} key={c.slug}>
+              // PENDING: case detail pages are off, was href={`/work/${c.slug}`}
+              <a className="cgwk-card" href="/work" style={rise(on, 200 + i * 80)} key={c.slug}>
                 <span className="cgwk-cimg">
                   <img src={c.img} alt="" loading="lazy" decoding="async" />
                   <em style={FONT.M}>{pad2(i + 1)}</em>
                 </span>
                 <span className="cgwk-cmeta" style={FONT.M}>
-                  {c.f1} · {c.f2}
+                  {c.f2} · {c.f7}
                 </span>
                 <span className="cgwk-ct" style={FONT.D}>
                   {c.f3}
@@ -141,12 +145,14 @@ export function Work() {
         <section className="cgwk-stage" aria-label={plain(HEADING)}>
           <div className="cg-wrap cgwk-head">
             <div>
-              <Eyebrow text="Selected work" on={on} />
+              <Eyebrow text="Proven impact" on={on} />
               <Heading text={HEADING} on={on} delay={80} style={{ marginTop: 16 }} />
             </div>
+            {/* PENDING (PENDING_FEATURES.md): intro copy
             <p className="cgwk-intro" style={rise(on, 300)}>
               {INTRO}
             </p>
+            */}
           </div>
           <div className="cgwk-cam">
             <div ref={gridRef} className="cgwk-grid">
@@ -185,13 +191,15 @@ export function Work() {
               </div>
               <div className="cgwk-copy" key={`c${shown}`}>
                 <p className="cgwk-meta" style={FONT.M}>
-                  {cur.f1} · {cur.f2} · {cur.f7}
+                  {cur.f2} · {cur.f7}
                 </p>
                 <h3 className="cgwk-title" style={FONT.D}>
                   {cur.f3}
                 </h3>
                 <div className="cgwk-btns">
+                  {/* PENDING (PENDING_FEATURES.md): case detail pages
                   <Button href={`/work/${cur.slug}`} label="Read the case" kind="solid" />
+                  */}
                   <Button href="/work" label="All case studies" kind="ghost" />
                 </div>
               </div>

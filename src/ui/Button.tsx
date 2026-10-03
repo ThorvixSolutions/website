@@ -20,12 +20,16 @@ type Props = {
  * a label that rolls to its duplicate and an arrow chip that rotates.
  */
 export function Button({ href, label, kind = "solid", arrow = true, className, style, onClick, ariaLabel, cur, icon }: Props) {
+  // links that leave the site (the booking calendar) open in a new tab
+  const external = /^https?:\/\//i.test(href);
   return (
     <a
       className={cx("cg-btn", `cg-${kind}`, !arrow && "cg-noarr", className)}
       data-mag="true"
       data-cur={cur || "run"}
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       onClick={onClick}
       aria-label={ariaLabel}
       style={style}

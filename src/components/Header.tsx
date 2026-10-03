@@ -9,7 +9,9 @@ import { FONT, WIDE, cx, pad2, parseLinks } from "@/lib/text";
 import { ArrowRight, Button } from "@/ui";
 
 const S = site[0];
-const LINKS = parseLinks("Services:/services, Work:/work, Process:/process, Pricing:/pricing, About:/about, Blog:/blog").slice(0, 7);
+// PENDING (PENDING_FEATURES.md): Pricing and Blog are not on thorvix.com yet
+// const LINKS = parseLinks("Services:/services, Work:/work, Process:/process, Pricing:/pricing, About:/about, Blog:/blog").slice(0, 7);
+const LINKS = parseLinks("Services:/services, Solutions:/#solutions, Case Studies:/work, Team:/#team, About:/about").slice(0, 7);
 const SERVICES = services.filter((s) => s.f1).slice(0, 6);
 const CASES = work.filter((w) => w.f1);
 const CTA_HREF = S.f8 || "/contact";
@@ -33,15 +35,19 @@ function Slab({ i }: { i: number }) {
   );
 }
 
-function Logo() {
+/** `dark` = sitting on a dark background, so the white-and-lime mark; otherwise the ink one. */
+function Logo({ dark = true }: { dark?: boolean }) {
   return (
     <a className="cghd-logo" href="/" style={{ ...FONT.D, ...WIDE }} aria-label={`${NAME}, home`}>
+      {/* the template's four-block mark, replaced by the Thorvix mark
       <span className="cghd-mark" aria-hidden>
         <i />
         <i />
         <i />
         <i />
       </span>
+      */}
+      <img className="cghd-mk" src={dark ? "/brand/thorvix-mark.png" : "/brand/thorvix-mark-ink.png"} alt="" width={28} height={28} />
       {NAME}
     </a>
   );
@@ -212,7 +218,8 @@ export function Header() {
         {SERVICES.length > 0 && (
           <div className="cghd-schips" style={FONT.M}>
             {SERVICES.map((s) => (
-              <a href={`/services/${s.slug}`} onClick={() => setSheet(false)} key={s.slug}>
+              // PENDING: detail pages are off, was href={`/services/${s.slug}`}
+              <a href={`/services#svc-${s.slug}`} onClick={() => setSheet(false)} key={s.slug}>
                 {s.f1}
               </a>
             ))}
@@ -224,7 +231,7 @@ export function Header() {
               {S.f4}
             </a>
           )}
-          <Button href={CTA_HREF} label="Start a project" kind="solid" />
+          <Button href={CTA_HREF} label="Book a consultation" kind="solid" />
         </div>
       </div>
     </div>
@@ -242,7 +249,7 @@ export function Header() {
       </a>
       <div className="cghd-bar">
         <div className="cghd-in">
-          <Logo />
+          <Logo dark={dark} />
           <nav className="cghd-nav" aria-label="Primary">
             <ul style={FONT.M}>
               {LINKS.map((l, i) => {
@@ -274,7 +281,7 @@ export function Header() {
               })}
             </ul>
           </nav>
-          <Button href={CTA_HREF} label="Start a project" kind="quiet" className="cghd-cta" />
+          <Button href={CTA_HREF} label="Book a consultation" kind="quiet" className="cghd-cta" />
           <button type="button" className="cghd-burger" aria-label="Menu" aria-expanded={sheet} onClick={() => setSheet(true)} style={FONT.M}>
             <span>Menu</span>
             <span className="cghd-bk" aria-hidden>
@@ -296,8 +303,9 @@ export function Header() {
             <ul>
               {SERVICES.map((s, i) => (
                 <li key={s.slug} style={{ "--i": i } as CSSProperties}>
+                  {/* PENDING: detail pages are off, was href={`/services/${s.slug}`} */}
                   <a
-                    href={`/services/${s.slug}`}
+                    href={`/services#svc-${s.slug}`}
                     tabIndex={mega ? 0 : -1}
                     onMouseEnter={() => setFeat(i)}
                     onFocus={() => setFeat(i)}
@@ -311,10 +319,12 @@ export function Header() {
                       <b style={{ ...FONT.D, ...WIDE }}>{s.f1}</b>
                       <em>{s.f2}</em>
                     </span>
+                    {/* PENDING (PENDING_FEATURES.md): per-service stat
                     <span className="cghd-out" style={FONT.M}>
                       <b>{s.f3}</b>
                       <small>{s.f4}</small>
                     </span>
+                    */}
                   </a>
                 </li>
               ))}
@@ -324,13 +334,14 @@ export function Header() {
             </a>
           </div>
           {featured && (
-            <a className="cghd-feat" href={`/work/${featured.slug}`} tabIndex={mega ? 0 : -1}>
+            // PENDING: case detail pages are off, was href={`/work/${featured.slug}`}
+            <a className="cghd-feat" href="/work" tabIndex={mega ? 0 : -1}>
               <span className="cghd-fph">
                 <img src={featured.img} alt="" loading="lazy" decoding="async" />
               </span>
               <span className="cghd-fl" style={FONT.M}>
                 <i />
-                Featured case · {featured.f1}
+                Featured case · {featured.f2} · {featured.f7}
               </span>
               <b style={{ ...FONT.D, ...WIDE }}>{featured.f4}</b>
               <span className="cghd-ft">{featured.f3}</span>

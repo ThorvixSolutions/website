@@ -1,4 +1,6 @@
-import { Clients, Cta, Faq, Hero, Impact, Insights, Pricing, Process, Reviews, Services, Stack, Studio, Team, Work } from "@/sections/home";
+import { Clients, Cta, Faq, Hero, Process, Reviews, Services, Studio, Team, Work } from "@/sections/home";
+// PENDING (PENDING_FEATURES.md): sections with no content on thorvix.com yet
+// import { Impact, Insights, Pricing, Stack } from "@/sections/home";
 
 export default function HomePage() {
   return (
@@ -9,13 +11,14 @@ export default function HomePage() {
       <Services />
       <Work />
       <Process />
-      <Impact />
-      <Stack />
+      {/* <Impact /> */}
+      {/* <Stack /> */}
       <Team />
       <Reviews />
-      <Pricing />
+      {/* <Pricing /> */}
+      {/* Faq currently renders the Solutions panels; the FAQ questions are pending */}
       <Faq />
-      <Insights />
+      {/* <Insights /> */}
       <Cta />
     </>
   );

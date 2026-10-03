@@ -14,9 +14,15 @@ const rows = (s: string, n: number) =>
     while (f.length < n) f.push("");
     return f;
   });
-const STATS = rows("2016|founded in Austin;38|engineers and designers;140+|products shipped;9|countries our clients ship in", 2);
+// PENDING (PENDING_FEATURES.md): the template's studio stats and rules are not on thorvix.com
+// const STATS = rows("2016|founded in Austin;38|engineers and designers;140+|products shipped;9|countries our clients ship in", 2);
+// const PRINCIPLES = rows(
+//   "Senior people only|Every project is run by engineers with at least eight years of shipping. No juniors learning on your budget.;Working software every two weeks|You click through something real at every demo. Progress is a build, never a slide.;Scope moves, dates do not|When something takes longer, we cut scope with you and keep the release on time.;You own everything|Code, cloud, accounts and designs live in your name from the first commit.",
+//   2,
+// );
+const STATS = rows("3×|faster shipping;60%|cost reduction;48h|team deploy", 2);
 const PRINCIPLES = rows(
-  "Senior people only|Every project is run by engineers with at least eight years of shipping. No juniors learning on your budget.;Working software every two weeks|You click through something real at every demo. Progress is a build, never a slide.;Scope moves, dates do not|When something takes longer, we cut scope with you and keep the release on time.;You own everything|Code, cloud, accounts and designs live in your name from the first commit.",
+  "Faster Deployment|From strategy session to production deployment in weeks, not the quarters your in-house hiring would take. We move at startup speed with enterprise-grade reliability.;Zero Hiring Overhead|Bypass recruiters, HR processes, payroll taxes, and benefit packages. Get senior-level engineers who hit the ground running on day one, billed simply, transparently.;Senior Talent, Immediately|No juniors padded into engagements. Every Thorvix team member is mid-to-senior level with documented production experience in AI, full-stack, and cloud infrastructure.;Elastic Team Scaling|Need 2 engineers for a sprint and 8 for a launch? We scale seamlessly. Contract adjusts monthly: your engineering capacity matches your business reality.;AI-First from Day One|Every engagement is designed with AI augmentation in mind. We don’t bolt AI on at the end, it’s architecturally native from the first sprint.",
   2,
 );
 const TIMELINE = rows(
@@ -156,9 +162,9 @@ export function About() {
     <div ref={ref} className={cx("cg cgab", phone ? "is-ph" : w < 1100 && "is-tab", intro && "is-in", reduced && "is-still")} data-cg-w={w} style={FONT.B}>
       <section className="cg-dark cgab-open" aria-label="About the studio">
         <div className="cgab-w">
-          <Eyebrow text="About the studio" on={intro} />
+          <Eyebrow text="About Thorvix" on={intro} />
           <Heading
-            text="We build software|startups can *bet on.*"
+            text="Forged for|the *future.*"
             on={intro}
             tag="h1"
             size={phone ? "clamp(34px,10vw,52px)" : "clamp(46px,5.4vw,92px)"}
@@ -168,6 +174,7 @@ export function About() {
           />
           <div className="cgab-grid">
             <div className="cgab-story" style={rise(intro, 420)}>
+              {/* PENDING (PENDING_FEATURES.md): the studio's origin story is not on thorvix.com
               <p>
                 Thorvix started in Austin in 2016 with four engineers who were tired of watching good ideas die in slow agencies. We wanted a studio
                 where the people who scope the work are the people who write the code.
@@ -176,7 +183,14 @@ export function About() {
                 Today we are 38 engineers, designers and product leads. We have shipped more than 140 products for startups and growing companies, from
                 first MVPs to platforms that serve millions of users, and we still demo working software every two weeks.
               </p>
+              */}
+              <p>Stop wasting months on recruitment and onboarding. We bring the expertise, the infra, and the execution.</p>
+              <p>
+                A dedicated core of specialists building the future of enterprise intelligence. No layers, no account managers: you work directly
+                with the people who build.
+              </p>
             </div>
+            {/* PENDING (PENDING_FEATURES.md): studio photo
             <figure className="cgab-fig" style={rise(intro, 300, 30)}>
               <div className="cgab-ph">
                 <img src={PHOTO} alt={CAPTION} decoding="async" fetchPriority="high" />
@@ -187,6 +201,7 @@ export function About() {
                 {CAPTION}
               </figcaption>
             </figure>
+            */}
           </div>
           <div ref={numsRef} className="cgab-nums">
             {STATS.map(([v, l], i) => (
@@ -201,8 +216,8 @@ export function About() {
       <section className="cgab-light" aria-label="How we work">
         <div className="cgab-w">
           <div ref={rulesRef} className="cgab-ph2">
-            <Eyebrow text="How we work" on={rulesOn} />
-            <Heading text="Four rules we|*do not* bend" on={rulesOn} delay={100} style={{ marginTop: 18 }} />
+            <Eyebrow text="Why Thorvix" on={rulesOn} />
+            <Heading text="The Thorvix|*edge.*" on={rulesOn} delay={100} style={{ marginTop: 18 }} />
             <p className="cgab-hint" style={{ ...FONT.M, ...rise(rulesOn, 300) }}>
               Hover or tap to turn
             </p>
@@ -236,6 +251,7 @@ export function About() {
               </button>
             ))}
           </div>
+          {/* PENDING (PENDING_FEATURES.md): company timeline, thorvix.com has no history section
           <div ref={tlRef} className="cgab-tlh">
             <div>
               <Eyebrow text="The studio so far" on={tlOn} />
@@ -245,7 +261,9 @@ export function About() {
               Drag to explore
             </p>
           </div>
+          */}
         </div>
+        {/* PENDING (PENDING_FEATURES.md): company timeline
         <div ref={stripRef} className="cgab-strip" tabIndex={0} role="region" aria-label="The studio so far">
           <ol className="cgab-tl">
             {TIMELINE.map(([year, title, body], i) => (
@@ -263,6 +281,7 @@ export function About() {
             <i style={{ transform: `scaleX(${Math.max(0.08, progress)})` }} />
           </span>
         </div>
+        */}
       </section>
     </div>
   );

@@ -1,14 +1,23 @@
 "use client";
 
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
-import { faq } from "@/data/cms";
+// PENDING (PENDING_FEATURES.md): the FAQ questions are not on thorvix.com. Until they are,
+// this terminal shows the five Solutions panels instead.
+// import { faq } from "@/data/cms";
+import { site, solutions as faq } from "@/data/cms";
 import { useMagnetic, useMounted, useReducedMotion, useReveal, useWidth } from "@/lib/hooks";
 import { FONT, cx, pad2, plain, rise } from "@/lib/text";
 import { Button, Eyebrow, Heading } from "@/ui";
 
-const HEADING = "Questions, *answered*";
-const COMMAND = "Thorvix faq --q";
-const HELP = "Still stuck? Ask a real engineer.";
+// const HEADING = "Questions, *answered*";
+// const COMMAND = "Thorvix faq --q";
+// const HELP = "Still stuck? Ask a real engineer.";
+const BOOK = site[0].f8 || "/contact";
+const HEADING = "Solutions, *deployed.*";
+const COMMAND = "thorvix run --solution";
+const HELP = "Let's discuss how we can break your bottlenecks.";
+// the transcripts are one line per turn
+const LINES = { whiteSpace: "pre-line" } as const;
 
 /** Types `text` three characters per tick whenever `key` changes; `skip` shows it all. */
 function useTyped(text: string, key: string, active: boolean) {
@@ -64,7 +73,7 @@ export function Faq({ page = "home" }: { page?: string }) {
   };
 
   return (
-    <section ref={ref} className={cx("cg cg-dark cgfq", phone ? "is-ph" : tablet && "is-tab", on && "is-on")} style={FONT.B} aria-label={plain(HEADING)}>
+    <section ref={ref} id="solutions" className={cx("cg cg-dark cgfq", phone ? "is-ph" : tablet && "is-tab", on && "is-on")} style={FONT.B} aria-label={plain(HEADING)}>
       <dl className="cg-sr">
         {items.map((it) => (
           <div key={it.slug}>
@@ -76,11 +85,11 @@ export function Faq({ page = "home" }: { page?: string }) {
       <div className="cg-wrap">
         <div className="cgfq-head">
           <div>
-            <Eyebrow text="FAQ" on={on} />
+            <Eyebrow text="Solutions" on={on} />
             <Heading text={HEADING} on={on} delay={100} style={{ marginTop: 22 }} />
           </div>
           <p className="cgfq-body" style={rise(on, 350)}>
-            Pick a question. The answer runs in the terminal, like everything else we ship.
+            Pick a use case. The agent runs it in the terminal.
           </p>
         </div>
         {phone ? (
@@ -100,7 +109,7 @@ export function Faq({ page = "home" }: { page?: string }) {
                       <p className="cgfq-cmd">
                         <b>$</b> {COMMAND} {pad2(i + 1)}
                       </p>
-                      <p className="cgfq-ans" style={FONT.B}>
+                      <p className="cgfq-ans" style={{ ...FONT.B, ...LINES }}>
                         {i === open ? mini.shown : it.f2}
                         {i === open && <span className="cgfq-caret" />}
                       </p>
@@ -111,7 +120,7 @@ export function Faq({ page = "home" }: { page?: string }) {
             ))}
             <li className="cgfq-phfoot">
               <span style={FONT.M}>{HELP}</span>
-              <Button href="/contact" label="Ask a question" kind="quiet" />
+              <Button href={BOOK} label="Book a call" kind="quiet" />
             </li>
           </ol>
         ) : (
@@ -154,14 +163,14 @@ export function Faq({ page = "home" }: { page?: string }) {
                   <b>$</b> {COMMAND} {pad2(cur + 1)}
                 </p>
                 <p className="cgfq-qline">› {q?.f1}</p>
-                <p className="cgfq-ans" style={FONT.B}>
+                <p className="cgfq-ans" style={{ ...FONT.B, ...LINES }}>
                   {term.shown}
                   <span className="cgfq-caret" />
                 </p>
               </div>
               <div className="cgfq-foot">
                 <span style={FONT.M}>{HELP}</span>
-                <Button href="/contact" label="Ask a question" kind="quiet" />
+                <Button href={BOOK} label="Book a call" kind="quiet" />
               </div>
             </div>
           </div>

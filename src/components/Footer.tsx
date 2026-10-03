@@ -9,9 +9,12 @@ import { FONT, WIDE, cx, parseLinks, rise } from "@/lib/text";
 import { Button } from "@/ui";
 
 const S = site[0];
-const COMPANY = parseLinks("Work:/work, Process:/process, Pricing:/pricing, About:/about, Blog:/blog, Contact:/contact");
+// PENDING (PENDING_FEATURES.md): Pricing and Blog are not on thorvix.com yet
+// const COMPANY = parseLinks("Work:/work, Process:/process, Pricing:/pricing, About:/about, Blog:/blog, Contact:/contact");
+const COMPANY = parseLinks("Case Studies:/work, Process:/process, About:/about, Contact:/contact");
 const LEGAL = parseLinks("Privacy:/privacy, Terms:/terms");
-const SOCIALS = parseLinks(S.f9);
+// PENDING (PENDING_FEATURES.md): thorvix.com lists no social links
+// const SOCIALS = parseLinks(S.f9);
 const WORDMARK = (S.f1 || "Thorvix").toUpperCase();
 
 export function Footer() {
@@ -176,7 +179,7 @@ export function Footer() {
           <div className="cgft-lead" style={rise(on, 0)}>
             <p className="cgft-kick" style={FONT.M}>
               <i />
-              Have a product in mind?
+              Ready to break through?
             </p>
             <a className="cgft-mail" href={`mailto:${S.f4}`} style={{ ...FONT.D, ...WIDE }}>
               <span>{S.f4}</span>
@@ -194,7 +197,7 @@ export function Footer() {
                   {S.f10}
                 </span>
               )}
-              <span>{`Local time · ${S.f6 || "Austin"} ${time}`}</span>
+              <span>{`Local time · ${S.f6 || "Lahore"} ${time}`}</span>
             </div>
           </div>
           <nav className="cgft-cols" aria-label="Footer" style={rise(on, 150)}>
@@ -205,7 +208,8 @@ export function Footer() {
               <ul>
                 {services.slice(0, 6).map((s) => (
                   <li key={s.slug}>
-                    <a href={`/services/${s.slug}`}>{s.f1}</a>
+                    {/* PENDING: detail pages are off, was href={`/services/${s.slug}`} */}
+                    <a href={`/services#svc-${s.slug}`}>{s.f1}</a>
                   </li>
                 ))}
               </ul>
@@ -222,6 +226,7 @@ export function Footer() {
                 ))}
               </ul>
             </div>
+            {/* PENDING (PENDING_FEATURES.md): social links
             <div>
               <p className="cgft-h" style={FONT.M}>
                 Social
@@ -235,6 +240,20 @@ export function Footer() {
                     </a>
                   </li>
                 ))}
+              </ul>
+            </div>
+            */}
+            <div>
+              <p className="cgft-h" style={FONT.M}>
+                Contact
+              </p>
+              <ul>
+                <li>
+                  <a href={`mailto:${S.f4}`}>{S.f4}</a>
+                </li>
+                <li>
+                  <a href={`tel:${S.f5.replace(/[^\d+]/g, "")}`}>{S.f5}</a>
+                </li>
               </ul>
             </div>
           </nav>
@@ -264,7 +283,7 @@ export function Footer() {
               {l.l}
             </a>
           ))}
-          <span className="cgft-made">Built in Austin, shipped worldwide</span>
+          <span className="cgft-made">AI-powered engineering, deployed fast</span>
         </div>
       </div>
     </footer>

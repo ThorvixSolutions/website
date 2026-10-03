@@ -9,7 +9,7 @@ import { FONT, WIDE, clamp01, cx, rise, splitList, splitPairs } from "@/lib/text
 import { Button } from "@/ui";
 
 const S = site[0];
-const STATS = "140+|products shipped;2 wk|to the first release;4.9/5|client rating";
+const STATS = "3×|faster shipping;60%|cost reduction;48h|team deploy";
 const SHIP_LABELS = splitList("Module 08 · incoming;Merging into main;Shipped to production");
 
 export function Hero() {
@@ -133,13 +133,13 @@ export function Hero() {
           </span>
           <span>{`${S.f6.toUpperCase()} — ${time}`}</span>
         </div>
-        <h1 className="cgh-h1" style={{ ...FONT.D, ...WIDE }} aria-label="Software that ships.">
+        <h1 className="cgh-h1" style={{ ...FONT.D, ...WIDE }} aria-label="Break every bottleneck.">
           <span className="cgh-l cgh-l1" aria-hidden>
-            <span style={rise(entered, 180, 90)}>Software</span>
+            <span style={rise(entered, 180, 90)}>Break every</span>
           </span>
           <span className="cgh-l cgh-l2" aria-hidden>
             <span style={rise(entered, 300, 90)}>
-              that <em className="cgh-acc">ships.</em>
+              <em className="cgh-acc">bottleneck.</em>
             </span>
           </span>
         </h1>
@@ -162,12 +162,12 @@ export function Hero() {
       <div className="cgh-foot">
         <div className="cgh-copy" style={rise(entered, 520)}>
           <p className="cgh-sub">
-            Thorvix is a software development studio. We design, build and ship web apps, mobile apps and AI features for startups and growing
-            companies, one working release every two weeks.
+            We deploy custom AI agents, dedicated engineering teams, and intelligent automation so you scale without the hiring overhead or the
+            headache.
           </p>
           <div className="cgh-btns">
-            <Button href="/contact" label="Start a project" kind="solid" />
-            <Button href="/work" label="See our work" kind="ghost" />
+            <Button href={S.f8 || "/contact"} label="Book a strategy call" kind="solid" />
+            <Button href="/services" label="View services" kind="ghost" />
           </div>
         </div>
         <div className="cgh-stats" style={rise(entered, 680)}>

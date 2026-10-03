@@ -1,7 +1,7 @@
 "use client";
 
 import { CSSProperties, MouseEvent, useEffect, useRef, useState } from "react";
-import { services, type ServiceRow } from "@/data/cms";
+import { services, site, type ServiceRow } from "@/data/cms";
 import { useMagnetic, useMounted, useReducedMotion, useReveal, useWidth } from "@/lib/hooks";
 import { onFrame } from "@/lib/ticker";
 import { FONT, WIDE, clamp01, cx, pad2, rise, splitList } from "@/lib/text";
@@ -39,6 +39,8 @@ function Chapter({ s, i, mounted, reduced, onEl }: { s: ServiceRow; i: number; m
         <p className="cgsl-short" style={rise(on, 200)}>
           {s.f2}
         </p>
+        {/* PENDING (PENDING_FEATURES.md): long description, deliverables, stat, starting price, stack and
+            the link to the detail page. thorvix.com only has a title and one sentence per service.
         <p className="cgsl-detail" style={rise(on, 280)}>
           {s.f7}
         </p>
@@ -68,6 +70,10 @@ function Chapter({ s, i, mounted, reduced, onEl }: { s: ServiceRow; i: number; m
         </div>
         <div style={rise(on, 520)}>
           <Button href={`/services/${s.slug}`} label="Explore the service" kind="ghost" ariaLabel={`Explore the service: ${s.f1}`} />
+        </div>
+        */}
+        <div style={rise(on, 280)}>
+          <Button href={site[0].f8 || `/contact?service=${encodeURIComponent(s.slug)}`} label="Book a strategy call" kind="ghost" ariaLabel={`Book a strategy call: ${s.f1}`} />
         </div>
       </div>
       <div className="cgsl-vis" aria-hidden>
