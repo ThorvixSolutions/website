@@ -3,8 +3,8 @@ import { Cta, Faq, Impact, Process } from "@/sections/home";
 import { PageHero } from "@/sections/shared/PageHero";
 
 export const metadata: Metadata = {
-  title: "Our Process — Two-Week Sprints from Idea to Launch | Forrentech",
-  description: "How Forrentech builds software: discovery, design, build and ship in two-week sprints, with working software demoed every sprint.",
+  title: "Our Process — Two-Week Sprints from Idea to Launch | Thorvix",
+  description: "How Thorvix builds software: discovery, design, build and ship in two-week sprints, with working software demoed every sprint.",
 };
 
 export default function ProcessPage() {

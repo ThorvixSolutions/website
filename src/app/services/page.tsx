@@ -4,9 +4,9 @@ import { ServicesList } from "@/sections/services/ServicesList";
 import { PageHero } from "@/sections/shared/PageHero";
 
 export const metadata: Metadata = {
-  title: "Software Development Services — Web Apps, Mobile Apps & AI | Forrentech",
+  title: "Software Development Services — Web Apps, Mobile Apps & AI | Thorvix",
   description:
-    "Web apps, mobile apps, AI features, product design, cloud & DevOps and dedicated teams from Forrentech, a software development studio for startups.",
+    "Web apps, mobile apps, AI features, product design, cloud & DevOps and dedicated teams from Thorvix, a software development studio for startups.",
 };
 
 export default function ServicesPage() {

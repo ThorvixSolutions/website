@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { NotFound } from "@/sections/shared/NotFound";
 
 export const metadata: Metadata = {
-  title: "Page not found | Forrentech",
+  title: "Page not found | Thorvix",
   description: "This page didn't ship.",
 };
 

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps<"/blog/[slug]">): P
   const { slug } = await params;
   const p = posts.find((x) => x.slug === slug);
   if (!p) return {};
-  return { title: `${p.f1} | Forrentech Blog`, description: p.f4 };
+  return { title: `${p.f1} | Thorvix Blog`, description: p.f4 };
 }
 
 export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {

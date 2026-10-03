@@ -4,8 +4,8 @@ import { Cta } from "@/sections/home";
 import { PageHero } from "@/sections/shared/PageHero";
 
 export const metadata: Metadata = {
-  title: "Blog — Notes on Building Software for Startups | Forrentech",
-  description: "Guides on MVP costs, AI features in production and shipping every two weeks, from the Forrentech team.",
+  title: "Blog — Notes on Building Software for Startups | Thorvix",
+  description: "Guides on MVP costs, AI features in production and shipping every two weeks, from the Thorvix team.",
 };
 
 export default function BlogPage() {

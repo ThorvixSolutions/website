@@ -7,7 +7,7 @@ import { FONT, cx, pad2, plain, rise } from "@/lib/text";
 import { Button, Eyebrow, Heading } from "@/ui";
 
 const HEADING = "Questions, *answered*";
-const COMMAND = "Forrentech faq --q";
+const COMMAND = "Thorvix faq --q";
 const HELP = "Still stuck? Ask a real engineer.";
 
 /** Types `text` three characters per tick whenever `key` changes; `skip` shows it all. */
@@ -136,7 +136,7 @@ export function Faq({ page = "home" }: { page?: string }) {
                 <i />
                 <i />
                 <i />
-                <span>Forrentech — zsh</span>
+                <span>Thorvix — zsh</span>
                 {!term.done && <em>click to skip</em>}
               </div>
               <div className="cgfq-scr" style={FONT.M}>

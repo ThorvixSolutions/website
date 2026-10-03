@@ -37,9 +37,9 @@ import { PageTransition } from "@/components/PageTransition";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import { BOOT_SCRIPT } from "@/lib/boot";
 
-const TITLE = "Forrentech — Tech Developers for AI Startups, Software & Apps";
+const TITLE = "Thorvix — Tech Developers for AI Startups, Software & Apps";
 const DESCRIPTION =
-  "Forrentech is a software development studio for startups: tech developers who design, build and ship web apps, mobile apps, software and AI features in two-week sprints.";
+  "Thorvix is a software development studio for startups: tech developers who design, build and ship web apps, mobile apps, software and AI features in two-week sprints.";
 
 // absolute base for the OG / Twitter image URLs; Vercel provides the production domain
 const SITE_URL =

@@ -3,8 +3,8 @@ import { Cta, Faq, Pricing } from "@/sections/home";
 import { PageHero } from "@/sections/shared/PageHero";
 
 export const metadata: Metadata = {
-  title: "Pricing — MVP Sprints, Product Teams & Retainers | Forrentech",
-  description: "Fixed-price MVP sprints, monthly product teams and scale retainers. Transparent pricing from Forrentech, a software development studio.",
+  title: "Pricing — MVP Sprints, Product Teams & Retainers | Thorvix",
+  description: "Fixed-price MVP sprints, monthly product teams and scale retainers. Transparent pricing from Thorvix, a software development studio.",
 };
 
 export default function PricingPage() {

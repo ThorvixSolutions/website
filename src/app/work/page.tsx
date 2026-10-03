@@ -4,9 +4,9 @@ import { PageHero } from "@/sections/shared/PageHero";
 import { WorkList } from "@/sections/work/WorkList";
 
 export const metadata: Metadata = {
-  title: "Our Work — Case Studies from Startups & Growing Companies | Forrentech",
+  title: "Our Work — Case Studies from Startups & Growing Companies | Thorvix",
   description:
-    "Case studies of web apps, mobile apps and AI products Forrentech designed, built and shipped: travel, fintech, health, retail and more.",
+    "Case studies of web apps, mobile apps and AI products Thorvix designed, built and shipped: travel, fintech, health, retail and more.",
 };
 
 export default function WorkPage() {

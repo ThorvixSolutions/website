@@ -20,7 +20,7 @@ const PRINCIPLES = rows(
   2,
 );
 const TIMELINE = rows(
-  "2016|Four engineers, one room|Forrentech opens in Austin with its first startup client.;2018|First million users|A fintech app we built passes one million sign-ups.;2019|Mobile practice|React Native and native iOS and Android join the web team.;2021|Remote across 6 time zones|The team grows to 20 and starts working with clients in Europe.;2023|AI features in production|Our first retrieval and assistant features go live for clients.;2024|100th product shipped|A milestone release, and a bigger studio on South Congress.;2026|38 people, 140+ products|Still demoing working software every two weeks.",
+  "2016|Four engineers, one room|Thorvix opens in Austin with its first startup client.;2018|First million users|A fintech app we built passes one million sign-ups.;2019|Mobile practice|React Native and native iOS and Android join the web team.;2021|Remote across 6 time zones|The team grows to 20 and starts working with clients in Europe.;2023|AI features in production|Our first retrieval and assistant features go live for clients.;2024|100th product shipped|A milestone release, and a bigger studio on South Congress.;2026|38 people, 140+ products|Still demoing working software every two weeks.",
   3,
 );
 
@@ -169,7 +169,7 @@ export function About() {
           <div className="cgab-grid">
             <div className="cgab-story" style={rise(intro, 420)}>
               <p>
-                Forrentech started in Austin in 2016 with four engineers who were tired of watching good ideas die in slow agencies. We wanted a studio
+                Thorvix started in Austin in 2016 with four engineers who were tired of watching good ideas die in slow agencies. We wanted a studio
                 where the people who scope the work are the people who write the code.
               </p>
               <p>

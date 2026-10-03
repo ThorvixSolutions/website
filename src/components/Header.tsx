@@ -13,7 +13,7 @@ const LINKS = parseLinks("Services:/services, Work:/work, Process:/process, Pric
 const SERVICES = services.filter((s) => s.f1).slice(0, 6);
 const CASES = work.filter((w) => w.f1);
 const CTA_HREF = S.f8 || "/contact";
-const NAME = S.f1 || "Forrentech";
+const NAME = S.f1 || "Thorvix";
 
 /** Three stacked isometric slabs; the one for this row's layer is lit. */
 function Slab({ i }: { i: number }) {

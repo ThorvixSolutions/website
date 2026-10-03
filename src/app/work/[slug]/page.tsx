@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps<"/work/[slug]">): P
   const { slug } = await params;
   const c = work.find((x) => x.slug === slug);
   if (!c) return {};
-  return { title: `${c.f1} — ${c.f3} | Forrentech`, description: c.f6 };
+  return { title: `${c.f1} — ${c.f3} | Thorvix`, description: c.f6 };
 }
 
 export default async function CasePage({ params }: PageProps<"/work/[slug]">) {

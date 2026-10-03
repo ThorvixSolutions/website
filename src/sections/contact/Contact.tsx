@@ -7,7 +7,7 @@ import { FONT, cx, pad2, rise, splitList, splitPairs } from "@/lib/text";
 import { ArrowUpRight, Eyebrow, Heading } from "@/ui";
 
 const S = site[0];
-const EMAIL = S.f4 || "hello@Forrentech.dev";
+const EMAIL = S.f4 || "hello@Thorvix.dev";
 const BUILD = splitList("Web app;Mobile app;AI feature;Design;Team");
 const BUDGET = splitList("<$25k;$25–60k;$60–120k;$120k+");
 const TIMELINE = splitList("As soon as possible;In the next month;In 1–3 months;Just exploring");

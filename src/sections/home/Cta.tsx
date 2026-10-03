@@ -90,7 +90,7 @@ export function Cta() {
             ))}
           </ul>
         </div>
-        <div ref={objRef} className="cgc-obj" data-cur="Drag" role="img" aria-label="The Forrentech cube assembling from its modules">
+        <div ref={objRef} className="cgc-obj" data-cur="Drag" role="img" aria-label="The Thorvix cube assembling from its modules">
           <canvas ref={canvasRef} />
         </div>
       </div>

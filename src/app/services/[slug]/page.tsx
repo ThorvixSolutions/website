@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps<"/services/[slug]">
   const { slug } = await params;
   const s = services.find((x) => x.slug === slug);
   if (!s) return {};
-  return { title: `${s.f1} — Software Development Service | Forrentech`, description: s.f2 };
+  return { title: `${s.f1} — Software Development Service | Thorvix`, description: s.f2 };
 }
 
 export default async function ServicePage({ params }: PageProps<"/services/[slug]">) {
